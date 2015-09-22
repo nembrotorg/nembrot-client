@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
-    <title>NG6-Starter by @AngularClass</title>
+    <title ng-bind="($title || 'Home') + ' | joegatt.net'">joegatt.net</title>
     <meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1 user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,14 +10,16 @@
     <meta name="description" content="NG6-Starter by @AngularClass">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <base href="/">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width" initial-scale="1.0" maximum-scale="1.0" name="viewport">
+    <meta content="CHANGE_ME_OPTIONAL" property="fb:app_id">
+    <link rel="alternate" type="application/atom+xml" title="Figaro::ENV" href="http://joegatt.net/texts.atom" />
+    <link rel="stylesheet" media="all" href="http://d2zyjwzv9avbqu.cloudfront.net/assets/application-4438806dc54121048ffec84977f61345.css" />
   </head>
-  <body ng-app="app" ng-cloak>
-
+  <body class="signed-out" dir="ltr" ng-cloak>
     <app>
       Loading...
     </app>
-
     <script src="bundle.js"></script>
-
   </body>
 </html>

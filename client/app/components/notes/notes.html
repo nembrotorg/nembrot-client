@@ -1,19 +1,26 @@
-<div class="home-index">
+<div class="notes-index">
   <section>
     <header data-title="Texts | joegatt.net">
-      <h1>joegatt.net</h1>  
+      <h1>
+        Texts
+      </h1>  
     </header>
     <section class="notes">
       <header>
-        <h3>Texts</h3>
+        <h3>
+          Texts
+        </h3>
       </header>
       <ul>
-        <li ng-repeat="note in vm.list">
+        <li ng-repeat="note in vm.data.texts">
           <a ui-sref="home.notes.note({ id: note.id })">
             <h2>{{ ::note.blurb_title }}</h2>
             {{ ::note.blurb_body }}
           </a>
         </li>
       </ul>
+    <aside class="statistics">
+      {{ vm.data.count }} texts ({{ vm.data.total_word_count }} words).
+    </aside>
   </section>
 </div>

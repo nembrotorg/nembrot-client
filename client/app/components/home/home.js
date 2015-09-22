@@ -1,18 +1,25 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import uiRouterTitle from 'angular-ui-router-title';
 import homeComponent from './home.component';
 
 let homeModule = angular.module('home', [
-  uiRouter
+  uiRouter,
+  'ui.router.title'
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
-  $urlRouterProvider.otherwise('/');
-
+.config(($stateProvider) => {
   $stateProvider
     .state('home', {
       url: '/',
-      template: '<home></home>'
+      resolve: {
+        $title: function() { return 'Home'; }
+      },
+      views: {
+        '@' : {
+          template: '<home></home>'
+        }
+      }
     });
 })
 

@@ -1,0 +1,14 @@
+<div class="notes-show">
+  <article>
+    <header>
+      <h1>{{ ::vm.note.main_title }}</h1>
+    </header>
+    <section id="content">
+      <section class="regular" id="text">
+        <section class="body">
+          <div ng-bind-html="::vm.note.body"></div>
+        </section>
+      </section>
+    </section>
+  </article>
+</div>

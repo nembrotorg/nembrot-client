@@ -1,6 +1,7 @@
 class NavbarController {
-  constructor() {
+  constructor($rootScope) {
     this.name = 'navbar';
+    this.$state = $rootScope.$state;
   }
 }
 

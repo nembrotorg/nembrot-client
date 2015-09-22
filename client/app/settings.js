@@ -1,0 +1,2 @@
+const HOME_INDEX_LENGTH = 3;
+const NOTES_INDEX_LENGTH = 10;
