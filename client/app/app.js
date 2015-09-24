@@ -5,7 +5,6 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import uiRouterTitle from 'angular-ui-router-title';
-
 // import 'normalize.css';
 
 angular.module('app', [
