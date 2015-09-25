@@ -10,6 +10,7 @@ import template from 'gulp-template';
 import fs       from 'fs';
 import yargs    from 'yargs';
 import lodash   from 'lodash';
+import historyApiFallback from 'connect-history-api-fallback';
 
 let reload = () => serve.reload();
 let root = 'client';
@@ -49,7 +50,8 @@ gulp.task('serve', () => {
   serve({
     port: process.env.PORT || 3000,
     open: false,
-    server: { baseDir: root }
+    server: { baseDir: root },
+    middleware: [historyApiFallback()]
   });
 });
 
