@@ -10,10 +10,10 @@ let notesModule = angular.module('notes', [
 
 // Get name of route from config (here 'texts' instead of 'notes')
 
-.config(($stateProvider) => {
+.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider
     .state('home.notes', {
-      url: 'notes',
+      url: 'notes/p/{p:int}',
       resolve: {
         $title: function() { return 'Texts'; }
       },
@@ -23,6 +23,8 @@ let notesModule = angular.module('notes', [
         }
       }
     });
+  $urlRouterProvider
+    .when('notes', 'notes/p/1');
 })
 
 .directive('notes', notesComponent);

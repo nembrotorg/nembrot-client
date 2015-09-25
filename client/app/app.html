@@ -1,18 +1,8 @@
 <div class="app">
   <div id="main" role="main">
-
-    <nav>
-      <ol class="breadcrumb">
-        <li ng-repeat="crumb in $breadcrumbs">
-          <a ng-if="!$last" ui-sref="{{ crumb.state }}">{{ crumb.title }}</a>
-          <span ng-if="$last" class="current">{{ crumb.title }}</span>
-        </li>
-      </ol>
-    </nav>
-
+    <breadcrumbs></breadcrumbs>
     <div ui-view></div>
   </div>
-
+  <toolbar></toolbar>
   <navbar></navbar>
-
 </div>

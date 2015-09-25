@@ -11,7 +11,7 @@ let noteModule = angular.module('note', [
 .config(($stateProvider) => {
   $stateProvider
     .state('home.notes.note', {
-      url: '/{id:int}',
+      url: '^/notes/{id:int}',
       resolve: {
         $title: function($stateParams) { return 'Text ' + $stateParams.id; }
       },

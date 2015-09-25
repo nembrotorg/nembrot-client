@@ -19,9 +19,4 @@ angular.module('app', [
   $locationProvider.html5Mode(true);
 })
 
-.run(($rootScope, $state, $stateParams) => {
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-})
-
 .directive('app', AppComponent);

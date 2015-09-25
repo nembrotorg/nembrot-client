@@ -9,7 +9,8 @@ let <%= name %>Component = function () {
     template,
     controller,
     controllerAs: 'vm',
-    bindToController: true
+    bindToController: true,
+    replace: true
   };
 };
 

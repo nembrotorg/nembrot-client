@@ -9,7 +9,8 @@ let homeComponent = function () {
     template,
     controller,
     controllerAs: 'vm',
-    bindToController: true
+    bindToController: true,
+    replace: true
   };
 };
 
