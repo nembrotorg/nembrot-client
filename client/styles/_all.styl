@@ -25,6 +25,7 @@ a
         padding-left: 5px
         icon-link-ext()
         icon-medium()
+
 nav ul li a:first-of-type
   &[href*=pdf]
     citation-font()
@@ -36,23 +37,25 @@ nav ul li a:first-of-type
     text-transform: lowercase
   &:focus
     outline: 0
-  &[href*=admin]:before, &[href*=settings]:before
+  &[href*=admin]:before,
+  &[href*=settings]:before
     icon-settings()
     icon-medium()
   &[href*=users]:before
     icon-user-2-empty()
   &[href$='#disqus_thread']:before,
-&[href$='#comments']:before
+  &[href$='#comments']:before
     icon-comment-empty()
   &[href$='#menu']:before
     icon-list()
-  &[href*=evernote]:before,
+  &[href*=evernote]:before
     icon-evernote()
-  &[href*=facebook]:before,
+  &[href*=facebook]:before
     icon-facebook()
   &[href*=github]:before
     icon-github-circled()
-  &[href*=google]:before, &[href*=gplus]:before
+  &[href*=google]:before,
+  &[href*=gplus]:before
     icon-gplus()
     icon-medium()
   &[href*=linkedin]:before
@@ -65,7 +68,7 @@ nav ul li a:first-of-type
     icon-mail()
     icon-small()
   &[href$=rss]:before,
-&[href$=atom]:before
+  &[href$=atom]:before
     icon-rss()
     icon-regular()
   &[href*=reset]:before
@@ -87,6 +90,7 @@ nav ul li a:first-of-type
     icon-medium()
   &[href*=youtube]:before
     icon-youtube()
+
 ul li.signed_in
   a:first-of-type
     &[href*=users]:before
@@ -121,29 +125,29 @@ form
       background-color: $row-hover-color
   input
     &[type=email],
-&[type=number],
-&[type=password],
-&[type=text],
-&[type=url],
-      border: 1px solid $border-color
-      color: $font-color
-      height: 24px
-      margin: 2px 0
-      padding: 0 !important
-      &.important:not([value])
-        border-color: $error-background-color
+    &[type=number],
+    &[type=password],
+    &[type=text],
+    &[type=url],
+          border: 1px solid $border-color
+          color: $font-color
+          height: 24px
+          margin: 2px 0
+          padding: 0 !important
+          &.important:not([value])
+            border-color: $error-background-color
     &[type=button],
-&[type=submit]
-      border: 1px solid $border-color
-      font-variant: small-caps
-      font-weight: bold
-      height: $line-height
-      margin-top: $line-height
-      padding: 0 $text-indent / 2
-      text-transform: lowercase
-      &:hover
-        background-color: $link-hover-color
-        color: $background-color
+    &[type=submit]
+          border: 1px solid $border-color
+          font-variant: small-caps
+          font-weight: bold
+          height: $line-height
+          margin-top: $line-height
+          padding: 0 $text-indent / 2
+          text-transform: lowercase
+          &:hover
+            background-color: $link-hover-color
+            color: $background-color
 h1
   margin: $line-height 0
   line-height: $line-height
@@ -206,7 +210,7 @@ ol, ul
 // REVIEW - icon CSS above is too specific
 ul li.deep-link
   a[href$='#disqus_thread']:before,
-a:first-of-type[href$='#comments']:before
+  a:first-of-type[href$='#comments']:before
     icon-comment()
 .instruction
   font-style: italic
@@ -274,7 +278,7 @@ footer
     li
       a
         &[href*=http],
-&[href*=mailto]
+        &[href*=mailto]
           &:before
             display: inline-block
             padding-right: 0.35em !important
@@ -287,6 +291,7 @@ footer
   small:before
     icon-cc-by-nc-sa()
     letter-spacing: 0.25em
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Elements

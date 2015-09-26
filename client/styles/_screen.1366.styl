@@ -2,21 +2,21 @@
   $column-width = 15px
   $gutter-width = 28px
   #main > nav,
-#main nav.pagination,
-footer nav,
-footer small,
-#tags,
-#versions,
-aside.statistics,
-.books-show .details
+  #main nav.pagination,
+  footer nav,
+  footer small,
+  #tags,
+  #versions,
+  aside.statistics,
+  .books-show .details
     suffix(6)
     column(24/36, offset: 6/36)
     clear: both
   #disqus_thread,
-#comments,
-ul.user,
-.registrations-new form, .registrations-edit form,
-.sessions-new form, .passwords-new form, .confirmations-new form
+  #comments,
+  ul.user,
+  .registrations-new form, .registrations-edit form,
+  .sessions-new form, .passwords-new form, .confirmations-new form
     suffix(15)
     column(15/36, offset: 6/36)
     clear: both
@@ -34,7 +34,6 @@ ul.user,
   //     text-align: right
   //     width: $text-indent * 2
   header.main
-    prefix(6)
     column(24/36, offset: 6/36)
     clear: both
   .citations
@@ -69,9 +68,8 @@ ul.user,
           code-font()
           padding-top: ($line-height * 2)
     .gems, .palette
-      prefix(6)
       suffix(6)
-      column(24/36)
+      column(24/36, offset: 6/36)
   .books-index, .colophon-index .gems
     ul
       css-columns(2)

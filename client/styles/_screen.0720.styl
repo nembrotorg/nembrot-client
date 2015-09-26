@@ -8,8 +8,8 @@
         .book
           font-style: normal
   #main,
-.hello-world,
-footer
+  .hello-world,
+  footer
     margin: 0 auto $line-height auto
     ul
       &.promotions, &.sections
@@ -40,7 +40,7 @@ footer
   iframe
     clear: both
     &[src*='vimeo'],
-&[src*='youtube']
+    &[src*='youtube']
       height: ($line-height * 16)
     &[src*='soundcloud.com']
       height: ($line-height * 6)
@@ -88,7 +88,7 @@ footer
           height: ($line-height * 6)
           margin-bottom: ($line-height * 2 / 3)
     aside
-      column(36/36)
+      column(24/24)
     #text
       column(24/36)
       font-color($body-font-color)
@@ -183,12 +183,12 @@ footer
     nav
       ul
         &.promotions
-          column(12/36)
+          column(8/24)
         &.sections
           css-columns(2)
-          column(12/36)
+          column(8/24)
         &.channels
           css-columns(2)
-          column(12/36)
+          column(8/24)
     small
-      column(36/36)
+      column(24/24)
