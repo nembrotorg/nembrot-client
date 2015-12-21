@@ -1,7 +1,7 @@
 <div class="home-index">
   <section>
     <header class="main">
-      <h1>joegatt.net</h1>  
+      <h1>joegatt.net</h1>
     </header>
     <section class="notes">
       <header>
@@ -9,11 +9,12 @@
       </header>
       <ul>
         <li ng-repeat="note in vm.list">
-          <a ui-sref="home.notes.note({ id: note.id })">
+          <a ui-sref="note({ id: note.id })">
             <h2>{{ ::note.blurb_title }}</h2>
             {{ ::note.blurb_body }}
           </a>
         </li>
       </ul>
+    </section>
   </section>
 </div>

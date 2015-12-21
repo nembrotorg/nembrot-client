@@ -82,8 +82,8 @@ embed-font($font-name, $font-variant, $weight = normal, $style = normal)
   @font-face
     font-family: $font-name
     src: url(\/fonts\/$font-name\/$font-variant\.eot)
-    src: url(\/fonts\/$font-name\/$font-variant\.eot?#iefix) format(embedded-opentype), 
-         url(\/fonts\/$font-name\/$font-variant\.woff) format(woff), 
+    src: url(\/fonts\/$font-name\/$font-variant\.eot?#iefix) format(embedded-opentype),
+         url(\/fonts\/$font-name\/$font-variant\.woff) format(woff),
          url(\/fonts\/$font-name\/$font-variant\.ttf) format(truetype)
     font-weight: $weight
     font-style: $style
@@ -221,7 +221,7 @@ body-font()
   color: $body-font-color
   font-family: $body-font-stack
   font-size: $body-font-size
-  text-align: justify
+  text-align: justify !important // REVIEW
   ms-text-justify: auto
 citation-font()
   color: $citation-font-color

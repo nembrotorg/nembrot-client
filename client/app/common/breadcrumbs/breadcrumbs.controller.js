@@ -1,7 +1,6 @@
 class BreadcrumbsController {
   constructor() {
-    let vm = this;
-    vm.name = 'breadcrumbs';
+    this.name = 'breadcrumbs';
   }
 }
 

@@ -8,10 +8,12 @@ let homeModule = angular.module('home', [
   'ui.router.title'
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $urlRouterProvider) => {
+  $urlRouterProvider.otherwise('/');
+
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '^/',
       resolve: {
         $title: function() { return 'Home'; }
       },

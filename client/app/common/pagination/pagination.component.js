@@ -5,7 +5,9 @@ import './pagination.styl';
 let paginationComponent = function () {
   return {
     restrict: 'E',
-    scope: true,
+    scope: {
+      count: '='
+    },
     template,
     controller,
     controllerAs: 'vm',

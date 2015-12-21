@@ -20,9 +20,9 @@
     </li>
     <li class="share">
       <ul>
-        <li><a href="https://www.facebook.com/share.php?u={{ vm.shareable_url }}"></a></li>
-        <li><a href="https://twitter.com/home?status={{ vm.shareable_url }}"></a></li>
-        <li><a href="https://plus.google.com/share?url={{ vm.shareable_url }}"></a></li>
+        <li><a href="https://www.facebook.com/share.php?u={{ vm.$location.absUrl() }}"></a></li>
+        <li><a href="https://twitter.com/home?status={{ vm.shareableUrl }}"></a></li>
+        <li><a href="https://plus.google.com/share?url={{ vm.$location.absUrl() }}"></a></li>
       </ul>
     </li>
     <li class="code">

@@ -1,19 +1,15 @@
 <div class="notes-index">
   <section>
     <header class="main">
-      <h1>
-        Texts
-      </h1>  
+      <h1>Texts</h1>
     </header>
     <section class="notes">
       <header>
-        <h3>
-          Texts
-        </h3>
+        <h3>Texts</h3>
       </header>
       <ul>
-        <li ng-repeat="note in vm.data.texts">
-          <a ui-sref="home.notes.note({ id: note.id })">
+        <li ng-repeat="note in vm.list">
+          <a ui-sref="note({ id: note.id })">
             <h2>{{ ::note.blurb_title }}</h2>
             {{ ::note.blurb_body }}
           </a>
@@ -21,8 +17,8 @@
       </ul>
     </section>
     <aside class="statistics">
-      {{ ::vm.data.count }} texts ({{ ::vm.data.total_word_count }} words).
+      <p>{{ ::vm.count | number }} texts ({{ ::vm.total_word_count | number }} words).</p>
     </aside>
-    <pagination></pagination>
+    <pagination ng-if="vm.count" count="vm.count"></pagination>
   </section>
 </div>
