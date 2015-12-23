@@ -9,25 +9,17 @@ let notesModule = angular.module('notes', [
 ])
 
 // Get name of route from config (here 'texts' instead of 'notes')
-.config(($stateProvider, $urlRouterProvider) => {
+.config(($stateProvider) => {
   $stateProvider
     .state('notes', {
       parent: 'home',
-      url: '^/notes/p/{p:int}',
-      resolve: {
-        $title: function() { return 'Texts'; }
-      },
-      views: {
-        '@' : {
-          template: '<notes></notes>'
+      url: '^/notes?{p:int}',
+      params: {
+        p: {
+          value: 1,
+          squash: true
         }
-      }
-    });
-  // Alias for the above. REVIEW: This should not be a separate state
-  $stateProvider
-    .state('notes-short', {
-      parent: 'home',
-      url: '^/notes',
+      },
       resolve: {
         $title: function() { return 'Texts'; }
       },
