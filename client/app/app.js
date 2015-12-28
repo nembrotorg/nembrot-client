@@ -22,4 +22,8 @@ angular.module('app', [
   $locationProvider.html5Mode(true);
 })
 
+.config(($urlRouterProvider) => {
+  $urlRouterProvider.otherwise('^/');
+})
+
 .directive('app', AppComponent);
