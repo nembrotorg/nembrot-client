@@ -18,8 +18,8 @@ class NoteController {
   }
 
 
-  let $ = require('jquery');
-  let _ = require('underscore'); // use lodash
+  let $ = require('jquery'); // try using angular.element
+  // let _ = require('underscore'); // use lodash
   // let $ = require('jquery/src/core');
   // require('jquery/src');
   // require('jquery/src/core/init');
@@ -34,7 +34,6 @@ class NoteController {
     }
   };
   place_annotations_do = function () {
-    console.log('Doing');
     let annotations, corrected_top, minimum, new_top;
     if ($('#annotations').length > 0) {
       $('#annotations').addClass('side-annotations');
@@ -45,12 +44,10 @@ class NoteController {
       }
       new_top = minimum;
       corrected_top = minimum;
-      console.log(annotations);
       annotations.each(i => {
         new_top = $(`a[id=annotation-mark-${ i + 1 }]`).offset().top;
         corrected_top = new_top <= minimum ? minimum : new_top;
         minimum = corrected_top + $(this).outerHeight(true);
-        console.log(minimum, corrected_top, $(this));
         return $(`li[id=annotation-${ i + 1 }]`).offset({ top: corrected_top });
       });
       return annotations;
@@ -59,7 +56,6 @@ class NoteController {
   };
   _correct_annotations_from_bottom = function (annotations) {
     let maximum, reversed_annotations, summed_heights;
-    console.log(annotations);
     reversed_annotations = annotations.get().reverse();
     maximum = $('#text .body').offset().top + $('#text .body').outerHeight(false);
     summed_heights = _.reduce(reversed_annotations, (memo, num) => {

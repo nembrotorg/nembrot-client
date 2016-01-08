@@ -10,6 +10,7 @@ let notesModule = angular.module('notes', [
 
 // Get name of route from config (here 'texts' instead of 'notes')
 .config(($stateProvider) => {
+  "ngInject";
   $stateProvider
     .state('notes', {
       parent: 'home',
@@ -31,6 +32,6 @@ let notesModule = angular.module('notes', [
     });
 })
 
-.directive('notes', notesComponent);
+.component('notes', notesComponent);
 
 export default notesModule;

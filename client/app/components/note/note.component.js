@@ -2,16 +2,12 @@ import template from './note.html';
 import controller from './note.controller';
 import './note.styl';
 
-let noteComponent = function () {
-  return {
-    restrict: 'E',
-    scope: {},
-    template,
-    controller,
-    controllerAs: 'vm',
-    bindToController: true,
-    replace: true
-  };
+let noteComponent = {
+  restrict: 'E',
+  bindings: {},
+  template,
+  controller,
+  controllerAs: 'vm'
 };
 
 export default noteComponent;

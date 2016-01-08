@@ -36,7 +36,7 @@ describe('Pagination', () => {
 
   describe('Component', () => {
       // component/directive specs
-      let component = PaginationComponent();
+      let component = PaginationComponent;
 
       it('includes the intended template',() => {
         expect(component.template).to.equal(PaginationTemplate);

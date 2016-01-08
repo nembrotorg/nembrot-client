@@ -6,6 +6,6 @@ let toolbarModule = angular.module('toolbar', [
   uiRouter
 ])
 
-.directive('toolbar', toolbarComponent);
+.component('toolbar', toolbarComponent);
 
 export default toolbarModule;

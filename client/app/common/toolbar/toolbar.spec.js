@@ -36,7 +36,7 @@ describe('Toolbar', () => {
 
   describe('Component', () => {
       // component/directive specs
-      let component = ToolbarComponent();
+      let component = ToolbarComponent;
 
       it('includes the intended template',() => {
         expect(component.template).to.equal(ToolbarTemplate);

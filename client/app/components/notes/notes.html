@@ -17,7 +17,7 @@
       </ul>
     </section>
     <aside class="statistics">
-      <p>{{ ::vm.count | number }} texts ({{ ::vm.total_word_count | number }} words).</p>
+      <p>{{ ::vm.count | number:0 }} texts ({{ ::vm.total_word_count | number:0 }} words).</p>
     </aside>
     <pagination ng-if="vm.count" count="vm.count"></pagination>
   </section>

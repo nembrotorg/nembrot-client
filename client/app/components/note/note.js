@@ -9,6 +9,7 @@ let noteModule = angular.module('note', [
 ])
 
 .config(($stateProvider) => {
+  "ngInject";
   $stateProvider
     .state('note', {
       parent: 'notes',
@@ -24,6 +25,6 @@ let noteModule = angular.module('note', [
     });
 })
 
-.directive('note', noteComponent);
+.component('note', noteComponent);
 
 export default noteModule;

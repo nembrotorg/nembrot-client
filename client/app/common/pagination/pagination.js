@@ -6,6 +6,6 @@ let paginationModule = angular.module('pagination', [
   uiRouter
 ])
 
-.directive('pagination', paginationComponent);
+.component('pagination', paginationComponent);
 
 export default paginationModule;

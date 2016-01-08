@@ -7,6 +7,6 @@ let breadcrumbsModule = angular.module('breadcrumbs', [
   'ui.router.title'
 ])
 
-.directive('breadcrumbs', breadcrumbsComponent);
+.component('breadcrumbs', breadcrumbsComponent);
 
 export default breadcrumbsModule;

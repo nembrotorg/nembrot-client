@@ -2,16 +2,12 @@ import template from './toolbar.html';
 import controller from './toolbar.controller';
 import './toolbar.styl';
 
-let toolbarComponent = function () {
-  return {
-    restrict: 'E',
-    scope: {},
-    template,
-    controller,
-    controllerAs: 'vm',
-    bindToController: true,
-    replace: true
-  };
+let toolbarComponent = {
+  restrict: 'E',
+  bindings: {},
+  template,
+  controller,
+  controllerAs: 'vm'
 };
 
 export default toolbarComponent;
