@@ -18,11 +18,8 @@ angular.module('app', [
   Components.name
 ])
 
-.config(($locationProvider) => {
+.config(($locationProvider, $urlRouterProvider) => {
   $locationProvider.html5Mode(true);
-})
-
-.config(($urlRouterProvider) => {
   $urlRouterProvider.otherwise('^/');
 })
 
