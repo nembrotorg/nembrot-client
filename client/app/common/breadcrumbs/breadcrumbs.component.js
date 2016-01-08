@@ -4,7 +4,9 @@ import './breadcrumbs.styl';
 
 let breadcrumbsComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    crumbs: '='
+  },
   template,
   controller,
   controllerAs: 'vm'

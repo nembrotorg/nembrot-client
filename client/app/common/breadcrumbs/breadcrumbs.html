@@ -1,6 +1,6 @@
 <nav>
   <ol class="breadcrumb">
-    <li ng-repeat="crumb in $breadcrumbs">
+    <li ng-repeat="crumb in vm.crumbs">
       <a ng-if="!$last" ui-sref="{{ crumb.state }}">{{ crumb.title }}</a>
       <span ng-if="$last" class="current">{{ crumb.title }}</span>
     </li>
