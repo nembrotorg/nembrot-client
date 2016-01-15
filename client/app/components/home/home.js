@@ -14,12 +14,12 @@ let homeModule = angular.module('home', [
     .state('home', {
       url: '^/',
       resolve: {
-        $title: function($stateParams) { 
+        $title: function($stateParams) {
           return {
             title: 'Home',
             url: 'http://joegatt.net'
           };
-        },
+        }
       },
       views: {
         '@' : {
