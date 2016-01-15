@@ -15,7 +15,12 @@ let noteModule = angular.module('note', [
       parent: 'notes',
       url: '^/notes/{id:[0-9]{1,9}}',
       resolve: {
-        $title: function($stateParams) { return 'Text ' + $stateParams.id; }
+        $title: function($stateParams) {
+          return {
+            title: 'Text ' + $stateParams.id,
+            url: 'http://joegatt.net/notes/' + $stateParams.id
+          };
+        }
       },
       views: {
         '@' : {

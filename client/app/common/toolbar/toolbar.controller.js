@@ -1,8 +1,7 @@
 class ToolbarController {
-  constructor($location) {
+  constructor() {
     this.name = 'toolbar';
-    this.shareableUrl = $location.absUrl();
-
+    // this.url = $rootScope.$state;
   }
 }
 

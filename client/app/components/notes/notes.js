@@ -22,7 +22,12 @@ let notesModule = angular.module('notes', [
         }
       },
       resolve: {
-        $title: function() { return 'Texts'; }
+        $title: function($stateParams) {
+          return {
+            title: 'Texts',
+            url: 'http://joegatt.net/notes' + ($stateParams.p ? '?p=' + $stateParams.id : '')
+          };
+        }
       },
       views: {
         '@' : {
