@@ -1,8 +1,8 @@
 class NavbarController {
-  constructor($http, $rootScope) {
+  constructor($http) {
     this.$http = $http;
+
     this.name = 'navbar';
-    this.$state = $rootScope.$state;
 
     // Use the same request as in home page (caching)
     this.$http.get('http://joegatt.net/texts/p/1.json?blurb=true')

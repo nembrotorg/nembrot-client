@@ -20,7 +20,11 @@ let noteModule = angular.module('note', [
             title: 'Text ' + $stateParams.id,
             url: 'http://joegatt.net/notes/' + $stateParams.id
           };
-        }
+        },
+        // noteContent: function($http, $stateParams) {
+        //   $http.get(`http://joegatt.net/texts/${ $stateParams.id }.json?body=html&extended=true`)
+        //     .then(function(response){ return response.data;});
+        // }
       },
       views: {
         '@' : {

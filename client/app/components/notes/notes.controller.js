@@ -1,16 +1,14 @@
 class NotesController {
   constructor($http, $rootScope, $scope, $stateParams) {
-    let vm = this;
-    vm.name = 'notes';
+    this.name = 'notes';
+    this.pageNumber = $stateParams.p;
 
-    vm.pageNumber = $stateParams.p;
-
-    $http.get(`http://joegatt.net/texts/p/${ vm.pageNumber }.json?blurb=true`)
+    $http.get(`http://joegatt.net/texts/p/${ this.pageNumber }.json?blurb=true`)
       .then(response => {
-        vm.list = response.data.texts;
-        vm.data = response.data;
-        vm.count = response.data.count;
-        vm.total_word_count = response.data.total_word_count;
+        this.list = response.data.texts;
+        this.data = response.data;
+        this.count = response.data.count;
+        this.total_word_count = response.data.total_word_count;
       });
   }
 }

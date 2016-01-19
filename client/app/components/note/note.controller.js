@@ -1,14 +1,13 @@
 class NoteController {
   constructor($http, $sce, $stateParams) {
-  this.$http = $http;
-  // this.$sce = $sce;
-  this.$stateParams = $stateParams;
-
   this.name = 'note';
-  this.id = this.$stateParams.id;
+  this.id = $stateParams.id;
 
-  this.$http.get(`http://joegatt.net/texts/${ this.id }.json?body=html&extended=true`)
+  $http.get(`http://joegatt.net/texts/${ this.id }.json?body=html&extended=true`)
     .then(response => this.note = sanitize(response.data));
+
+  // this.noteContent = this.noteContent;
+  // this.note = sanitize(this.noteContent);
 
   setTimeout(function(){ place_annotations_do(); }, 1000);
 

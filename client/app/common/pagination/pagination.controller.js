@@ -1,18 +1,17 @@
 class PaginationController {
   constructor($stateParams) {
-    let vm = this;
-    vm.name = 'pagination';
+    this.name = 'pagination';
 
     let size = 10; // $settings.pageSize
-    let count = vm.count;
+    let count = this.count || 1;
 
     let last = Math.ceil(count / size);
-    vm.page = $stateParams.p;
-    vm.last = last;
-    vm.pages = Array.from(new Array(last), (x, i) => i + 1);
+    this.page = $stateParams.p;
+    this.last = last;
+    this.pages = Array.from(new Array(last), (x, i) => i + 1);
 
-    vm.previous = vm.page === 1 ? 1 : vm.page - 1;
-    vm.next = vm.page === last ? last : vm.page + 1;
+    this.previous = this.page === 1 ? 1 : this.page - 1;
+    this.next = this.page === last ? last : this.page + 1;
 
   }
 }
