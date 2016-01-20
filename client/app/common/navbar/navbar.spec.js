@@ -1,16 +1,17 @@
-import NavbarModule from './navbar'
+import NavbarModule from './navbar';
 import NavbarController from './navbar.controller';
 import NavbarComponent from './navbar.component';
 import NavbarTemplate from './navbar.html';
 
 describe('Navbar', () => {
-  let $rootScope, makeController;
+  let $http, $rootScope, makeController;
 
   beforeEach(window.module(NavbarModule.name));
-  beforeEach(inject((_$rootScope_) => {
+  beforeEach(inject((_$rootScope_, _$http_) => {
     $rootScope = _$rootScope_;
+    $http = _$http_;
     makeController = () => {
-      return new NavbarController();
+      return new NavbarController($http);
     };
   }));
 
@@ -20,7 +21,7 @@ describe('Navbar', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
     });
@@ -29,8 +30,8 @@ describe('Navbar', () => {
   describe('Template', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(NavbarTemplate).to.match(/{{\s?vm\.name\s?}}/g);
+    it('contains menu HTML', () => {
+      expect(NavbarTemplate).to.match(/li\sid\s?=\s?\"menu\"/g);
     });
   });
 

@@ -20,7 +20,7 @@ describe('Breadcrumbs', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
     });
@@ -29,8 +29,11 @@ describe('Breadcrumbs', () => {
   describe('Template', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(BreadcrumbsTemplate).to.match(/{{\s?vm\.name\s?}}/g);
+    it('contains breadcrumbs HTML', () => {
+      expect(BreadcrumbsTemplate).to.match(/ol\sclass\s?=\s?"breadcrumb"/g);
+    });
+    it('iterates through vm.crumbs', () => {
+      expect(BreadcrumbsTemplate).to.match(/ng-repeat\s?=\s?\"crumb in vm\.crumbs\"/g);
     });
   });
 

@@ -4,13 +4,15 @@ import PaginationComponent from './pagination.component';
 import PaginationTemplate from './pagination.html';
 
 describe('Pagination', () => {
-  let $rootScope, makeController;
+  let $rootScope, $stateParams, makeController;
 
   beforeEach(window.module(PaginationModule.name));
-  beforeEach(inject((_$rootScope_) => {
+  beforeEach(inject((_$rootScope_, _$stateParams_) => {
     $rootScope = _$rootScope_;
+    $stateParams = _$stateParams_;
+    $stateParams.p = 1;
     makeController = () => {
-      return new PaginationController();
+      return new PaginationController($stateParams);
     };
   }));
 
@@ -20,7 +22,7 @@ describe('Pagination', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
     });
@@ -29,8 +31,8 @@ describe('Pagination', () => {
   describe('Template', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(PaginationTemplate).to.match(/{{\s?vm\.name\s?}}/g);
+    it('has pagination HTML', () => {
+      expect(PaginationTemplate).to.match(/nav\sclass\s?=\s?\"pagination\"/g);
     });
   });
 
