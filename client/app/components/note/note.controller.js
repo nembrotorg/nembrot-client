@@ -1,5 +1,5 @@
 class NoteController {
-  constructor($http, $sce, $stateParams) {
+  constructor($http, $sce, $stateParams, deorphanise) {
   this.name = 'note';
   this.id = $stateParams.id;
 
@@ -12,6 +12,7 @@ class NoteController {
   setTimeout(function(){ place_annotations_do(); }, 1000);
 
   function sanitize(note) {
+    note.body = deorphanise.paragraphs(note.body);
     note.body = $sce.trustAsHtml(note.body);
     return note;
   }

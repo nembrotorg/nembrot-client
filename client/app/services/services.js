@@ -1,7 +1,7 @@
-import unorphan from './unorphan/unorphan';
+import deorphanise from './deorphanise/deorphanise';
 
 let services = angular
   .module('app.services', [])
-  .service('unorphan', unorphan);
+  .service('deorphanise', deorphanise);
 
 export default services;
