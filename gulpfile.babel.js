@@ -26,17 +26,25 @@ let resolveToComponents = (glob) => {
   return path.join(root, 'app/components', glob); // app/components/{glob}
 };
 
+
+let resolveToServices = (glob) => {
+  glob = glob || '';
+  return path.join(root, 'app/services', glob); // app/services/{glob}
+};
+
 // map of all paths
 let paths = {
   js: resolveToComponents('**/*!(.spec.js).js'), // exclude spec files
-  styl: resolveToApp('**/*.styl'), // stylesheets
+  // styl: resolveToApp('**/*.styl'), // stylesheets
+  styl: path.join(root, '**/*.styl'),
   html: [
     resolveToApp('**/*.html'),
     path.join(root, 'index.html')
   ],
   entry: path.join(root, 'app/app.js'),
   output: root,
-  blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**')
+  blankComponentTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
+  blankServiceTemplates: path.join(__dirname, 'generator', 'service/**/*.**')
 };
 
 // use webpack.config.js to build modules
@@ -68,7 +76,26 @@ gulp.task('component', () => {
   let parentPath = yargs.argv.parent || '';
   let destPath = path.join(resolveToComponents(), parentPath, name);
 
-  return gulp.src(paths.blankTemplates)
+  return gulp.src(paths.blankComponentTemplates)
+    .pipe(template({
+      name: name,
+      upCaseName: cap(name)
+    }))
+    .pipe(rename((path) => {
+      path.basename = path.basename.replace('temp', name);
+    }))
+    .pipe(gulp.dest(destPath));
+});
+
+gulp.task('service', () => {
+  let cap = (val) => {
+    return val.charAt(0).toUpperCase() + val.slice(1);
+  };
+  let name = yargs.argv.name;
+  let parentPath = yargs.argv.parent || '';
+  let destPath = path.join(resolveToServices(), parentPath, name);
+
+  return gulp.src(paths.blankServiceTemplates)
     .pipe(template({
       name: name,
       upCaseName: cap(name)
