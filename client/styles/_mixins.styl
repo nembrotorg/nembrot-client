@@ -16,7 +16,7 @@ horizontal-list()
     list-style-image none
     list-style-type none
     margin-left 0
-    padding 0 $text-indent/4
+    padding 0 ($text-indent/4)
     white-space nowrap
     &:first-child
       padding-left 0
@@ -35,7 +35,7 @@ arrow-links()
     &:before
       icon-right()
       icon-small()
-      width: ($text-indent / 2)
+      width: ($text-indent/2)
 truncated-line()
   display: block
   height: $line-height
@@ -76,8 +76,8 @@ blurb($lines = 3, $image-width = 0, $context = $total-columns)
       right: 0
       width: columns($image-width, $context)
 compact-text()
-  line-height: ($line-height * 2 / 3)
-  margin-top: ($line-height * 1 / 3)
+  line-height: $line-height * 2/3
+  margin-top: $line-height * 1/3
 embed-font($font-name, $font-variant, $weight = normal, $style = normal)
   @font-face
     font-family: $font-name
@@ -133,7 +133,7 @@ pagination-nav($line-color = $furniture-color, $button-width = $text-indent)
   clear: both
   margin-bottom: $line-height
   ol
-    margin-top: ($line-height / 2 * -1)
+    margin-top: ($line-height/2) * -1
     position: relative
     li
       display: inline-block
@@ -148,7 +148,7 @@ pagination-nav($line-color = $furniture-color, $button-width = $text-indent)
         width: $button-width
         &:before
           display: block
-          margin: $line-height / 4 0
+          margin: ($line-height/4) 0
           width: $button-width
       .current
         font-weight: bold
