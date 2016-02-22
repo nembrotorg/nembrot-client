@@ -56,7 +56,7 @@ gulp.task('webpack', () => {
 
 gulp.task('serve', () => {
   serve({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4000,
     open: false,
     middleware: [historyApiFallback()],
     server: { baseDir: root }
