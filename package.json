@@ -1,7 +1,7 @@
 {
-  "name": "ng6-starter",
-  "version": "0.0.1",
-  "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
+  "name": "joegatt.net client",
+  "version": "4.0",
+  "description": "Client-side application for joegatt.net.",
   "main": "index.js",
   "dependencies": {
     "amd-define-factory-patcher-loader": "^1.0.0",
