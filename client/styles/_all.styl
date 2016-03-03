@@ -339,20 +339,22 @@ iframe
   line-height: ($line-height * 2/3)
   text-indent: 0
   ol
-    list-style-type: none
     padding-left: $text-indent
-  li
-    position: relative
-    text-align: left !important
-    text-indent: $text-indent * -1
-    &:target
-      background-color: $selected-background-color
-    a
-      display: inline
-      text-indent: 0
-      &[href*='#annotation-']
-        display: inline-block
-        width: $text-indent
+    li
+      hyphens()
+      list-style-type: none
+      padding: 0 !important
+      position: relative
+      text-align: left !important
+      text-indent: $text-indent * -1
+      &:target
+        background-color: $selected-background-color
+      a
+        display: inline
+        text-indent: 0
+        &[href*='#annotation-']
+          display: inline-block
+          width: $text-indent
 .citation
   citation-font()
 .count
