@@ -4,19 +4,12 @@ class NoteController {
   this.id = $stateParams.id;
 
   $http.get(`http://joegatt.net/texts/${ this.id }.json?body=html&extended=true`)
-    .then(response => this.note = sanitize(response.data));
+    .then(response => this.note = response.data);
 
   // this.noteContent = this.noteContent;
   // this.note = sanitize(this.noteContent);
 
-  setTimeout(function(){ place_annotations_do(); }, 1000);
-
-  function sanitize(note) {
-    note.body = deorphanise.paragraphs(note.body);
-    note.body = $sce.trustAsHtml(note.body);
-    return note;
-  }
-
+  setTimeout(function(){ place_annotations_do(); }, 3000);
 
   let $ = require('jquery'); // try using angular.element
   // let _ = require('underscore'); // use lodash
@@ -50,8 +43,8 @@ class NoteController {
         minimum = corrected_top + $(this).outerHeight(true);
         return $(`li[id=annotation-${ i + 1 }]`).offset({ top: corrected_top });
       });
-      return annotations;
-      // return _correct_annotations_from_bottom(annotations);
+      // return annotations;
+      return _correct_annotations_from_bottom(annotations);
     }
   };
   _correct_annotations_from_bottom = function (annotations) {
