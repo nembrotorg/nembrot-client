@@ -1,7 +1,7 @@
-import books from './books/books';
+import book from './book/book.factory';
 
-let services = angular
-  .module('app.services', [])
-  .factory('books', books);
+let factories = angular
+  .module('app.factories', [])
+  .factory('book', book);
 
-export default books;
+export default factories;
