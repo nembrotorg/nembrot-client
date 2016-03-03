@@ -14,7 +14,7 @@ let notesModule = angular.module('notes', [
   $stateProvider
     .state('notes', {
       parent: 'home',
-      url: '^/notes?{p:int}',
+      url: '^/texts?{p:int}',
       params: {
         p: {
           value: 1,
@@ -25,7 +25,8 @@ let notesModule = angular.module('notes', [
         $title: function($stateParams) {
           return {
             title: 'Texts',
-            url: 'http://joegatt.net/notes' + ($stateParams.p ? '?p=' + $stateParams.id : '')
+            url: 'http://joegatt.net/texts' + ($stateParams.p ? '?p=' + $stateParams.id : '')
+            // url: 'http://joegatt.net/notes' + ($stateParams.p === '1' ? '' : `?p=${ stateParams.p }`)
           };
         }
       },
