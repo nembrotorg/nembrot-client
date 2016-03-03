@@ -5,16 +5,13 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import uiRouterTitle from 'angular-ui-router-title';
-// import Filters from './filters/unsafe/unsafe';
-// import Filters from './filters/filters';
-import Services from './services/services';
+
 // import 'normalize.css';
 
 angular.module('app', [
   uiRouter,
   'ui.router.title',
   // 'jquery/src/core',
-  Services.name,
   Common.name,
   Components.name
 ])
