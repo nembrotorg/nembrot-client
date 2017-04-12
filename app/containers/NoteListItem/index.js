@@ -1,7 +1,7 @@
 /**
- * RepoListItem
+ * NoteListItem
  *
- * Lists the name and the issue count of a repository
+ * Lists the name and the issue count of a Note
  */
 
 import React from 'react';
@@ -13,45 +13,38 @@ import { makeSelectCurrentUser } from 'containers/App/selectors';
 import ListItem from 'components/ListItem';
 import IssueIcon from './IssueIcon';
 import IssueLink from './IssueLink';
-import RepoLink from './RepoLink';
+import NoteLink from './NoteLink';
 import Wrapper from './Wrapper';
 
-export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class NoteListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const item = this.props.item;
-    let nameprefix = '';
 
-    // If the repository is owned by a different person than we got the data for
-    // it's a fork and we should show the name of the owner
-    if (item.owner.login !== this.props.currentUser) {
-      nameprefix = `${item.owner.login}/`;
-    }
-
-    // Put together the content of the repository
+    // Put together the content of the Note
     const content = (
       <Wrapper>
-        <RepoLink href={item.html_url} target="_blank">
-          {nameprefix + item.name}
-        </RepoLink>
+        <NoteLink href={item.canonical_url} target="_blank">
+          {item.main_title}
+        </NoteLink>
         <IssueLink href={`${item.html_url}/issues`} target="_blank">
           <IssueIcon />
-          <FormattedNumber value={item.open_issues_count} />
+          <FormattedNumber value={item.id} />
         </IssueLink>
       </Wrapper>
     );
 
     // Render the content into a list item
     return (
-      <ListItem key={`repo-list-item-${item.full_name}`} item={content} />
+      <ListItem key={`note-list-item-${item.full_name}`} item={content} />
     );
   }
 }
 
-RepoListItem.propTypes = {
+NoteListItem.propTypes = {
   item: React.PropTypes.object,
   currentUser: React.PropTypes.string,
 };
 
 export default connect(createStructuredSelector({
   currentUser: makeSelectCurrentUser(),
-}))(RepoListItem);
+}))(NoteListItem);

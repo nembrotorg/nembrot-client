@@ -6,20 +6,20 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { IntlProvider } from 'react-intl';
 
-import ReposList from 'components/ReposList';
+import NotesList from 'components/NotesList';
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
-import { loadRepos } from '../../App/actions';
+import { loadNotes } from '../../App/actions';
 
 describe('<HomePage />', () => {
-  it('should render the repos list', () => {
+  it('should render the notes list', () => {
     const renderedComponent = shallow(
-      <HomePage loading error={false} repos={[]} />
+      <HomePage loading error={false} notes={[]} />
     );
-    expect(renderedComponent.contains(<ReposList loading error={false} repos={[]} />)).toEqual(true);
+    expect(renderedComponent.contains(<NotesList loading error={false} notes={[]} />)).toEqual(true);
   });
 
-  it('should render fetch the repos on mount if a username exists', () => {
+  it('should render fetch the notes on mount if a username exists', () => {
     const submitSpy = jest.fn();
     mount(
       <IntlProvider locale="en">
@@ -58,11 +58,11 @@ describe('<HomePage />', () => {
       expect(result.onSubmitForm).toBeDefined();
     });
 
-    it('should dispatch loadRepos when called', () => {
+    it('should dispatch loadNotes when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
       result.onSubmitForm();
-      expect(dispatch).toHaveBeenCalledWith(loadRepos());
+      expect(dispatch).toHaveBeenCalledWith(loadNotes());
     });
 
     it('should preventDefault if called with event', () => {

@@ -2,15 +2,15 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import RepoListItem from 'containers/RepoListItem';
+import NoteListItem from 'containers/NoteListItem';
 import List from 'components/List';
 import LoadingIndicator from 'components/LoadingIndicator';
-import ReposList from '../index';
+import NotesList from '../index';
 
-describe('<ReposList />', () => {
+describe('<NotesList />', () => {
   it('should render the loading indicator when its loading', () => {
     const renderedComponent = shallow(
-      <ReposList loading />
+      <NotesList loading />
     );
     expect(renderedComponent.contains(<List component={LoadingIndicator} />)).toEqual(true);
   });
@@ -18,7 +18,7 @@ describe('<ReposList />', () => {
   it('should render an error if loading failed', () => {
     const renderedComponent = mount(
       <IntlProvider locale="en">
-        <ReposList
+        <NotesList
           loading={false}
           error={{ message: 'Loading failed!' }}
         />
@@ -27,8 +27,8 @@ describe('<ReposList />', () => {
     expect(renderedComponent.text()).toMatch(/Something went wrong/);
   });
 
-  it('should render the repositories if loading was successful', () => {
-    const repos = [{
+  it('should render the Notes if loading was successful', () => {
+    const notes = [{
       owner: {
         login: 'mxstbr',
       },
@@ -38,19 +38,19 @@ describe('<ReposList />', () => {
       full_name: 'react-boilerplate/react-boilerplate',
     }];
     const renderedComponent = shallow(
-      <ReposList
-        repos={repos}
+      <NotesList
+        notes={notes}
         error={false}
       />
     );
 
-    expect(renderedComponent.contains(<List items={repos} component={RepoListItem} />)).toEqual(true);
+    expect(renderedComponent.contains(<List items={notes} component={NoteListItem} />)).toEqual(true);
   });
 
   it('should not render anything if nothing interesting is provided', () => {
     const renderedComponent = shallow(
-      <ReposList
-        repos={false}
+      <NotesList
+        notes={false}
         error={false}
         loading={false}
       />

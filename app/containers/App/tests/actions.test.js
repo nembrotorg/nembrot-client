@@ -1,51 +1,51 @@
 import {
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
+  LOAD_NOTES,
+  LOAD_NOTES_SUCCESS,
+  LOAD_NOTES_ERROR,
 } from '../constants';
 
 import {
-  loadRepos,
-  reposLoaded,
-  repoLoadingError,
+  loadNotes,
+  NotesLoaded,
+  NoteLoadingError,
 } from '../actions';
 
 describe('App Actions', () => {
-  describe('loadRepos', () => {
+  describe('loadNotes', () => {
     it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS,
+        type: LOAD_NOTES,
       };
 
-      expect(loadRepos()).toEqual(expectedResult);
+      expect(loadNotes()).toEqual(expectedResult);
     });
   });
 
-  describe('reposLoaded', () => {
-    it('should return the correct type and the passed repos', () => {
+  describe('NotesLoaded', () => {
+    it('should return the correct type and the passed notes', () => {
       const fixture = ['Test'];
       const username = 'test';
       const expectedResult = {
-        type: LOAD_REPOS_SUCCESS,
-        repos: fixture,
+        type: LOAD_NOTES_SUCCESS,
+        notes: fixture,
         username,
       };
 
-      expect(reposLoaded(fixture, username)).toEqual(expectedResult);
+      expect(NotesLoaded(fixture, username)).toEqual(expectedResult);
     });
   });
 
-  describe('repoLoadingError', () => {
+  describe('NoteLoadingError', () => {
     it('should return the correct type and the error', () => {
       const fixture = {
         msg: 'Something went wrong!',
       };
       const expectedResult = {
-        type: LOAD_REPOS_ERROR,
+        type: LOAD_NOTES_ERROR,
         error: fixture,
       };
 
-      expect(repoLoadingError(fixture)).toEqual(expectedResult);
+      expect(NoteLoadingError(fixture)).toEqual(expectedResult);
     });
   });
 });

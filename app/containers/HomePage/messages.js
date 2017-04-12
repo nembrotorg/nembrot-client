@@ -20,7 +20,7 @@ export default defineMessages({
   },
   trymeMessage: {
     id: 'boilerplate.containers.HomePage.tryme.message',
-    defaultMessage: 'Show Github repositories by',
+    defaultMessage: 'Show Github Notes by',
   },
   trymeAtPrefix: {
     id: 'boilerplate.containers.HomePage.tryme.atPrefix',
