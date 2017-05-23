@@ -52,7 +52,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <div>
           <CenteredSection>
             <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
+              <FormattedMessage {...messages.startProjectHeader} /> SSSSSSSSSSSSSS
             </H2>
             <p>
               <FormattedMessage {...messages.startProjectMessage} />
