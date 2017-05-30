@@ -13,28 +13,38 @@ const Img = styled.img`
   border: 1px solid red;
 `;
 
+const FooterMainUl = styled.ul`
+  padding: 0;
+  width: 100%;
+`;
+
+const FooterPromosUl = styled.ul`
+  padding: 0;
+`;
+
 const TwoColUl = styled.ul`
   columns: 2;
+  padding: 0;
 `;
 
 const HorizontalLi = styled.li`
-  display: inline;
+  display: inline-block;
 `;
 
 function Footer() {
   return (
     <Wrapper>
       <nav>
-        <ul>
+        <FooterMainUl>
           <HorizontalLi id="menu">
-            <ul className="promotions">
+            <FooterPromosUl>
               <li><A href="/texts/378">The Reading Machine Revisited</A></li>
               <li><A href="/texts/379">The Amanuensis</A></li>
               <li><A href="/texts/164">The Reading Machine</A></li>
               <li><A href="/texts/112">Packing My Library</A></li>
               <li><A href="/pantography">Pantography</A></li>
               <li><A href="/wutz">Jean Paul: Schulmeisterlein Wutz</A></li>
-            </ul>
+            </FooterPromosUl>
           </HorizontalLi>
           <HorizontalLi>
             <TwoColUl>
@@ -68,7 +78,7 @@ function Footer() {
               <li><A href="http://joegatt.net/texts.atom">Atom feed</A></li>
             </TwoColUl>
           </HorizontalLi>
-        </ul>
+        </FooterMainUl>
       </nav>
       <small><FormattedMessage {...messages.licenseMessage} /></small>
       <small className="copyright">Except as otherwise stated, all content on <span>joegatt.net</span> is <span className="byline author vcard">by <A href="http://joegatt.net" className="fn">Joe Gatt</A></span> and licensed under <A rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence">CC BY-NC-SA 4.0</A>.</small>
