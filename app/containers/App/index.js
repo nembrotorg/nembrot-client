@@ -11,21 +11,14 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import Header from 'components/Header';
+import Page from 'components/Page';
+import Content from 'components/Content';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 
-const AppWrapper = styled.div`
-  max-width: 90%;
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
-`;
-
 export function App(props) {
   return (
-    <AppWrapper>
+    <Page>
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
@@ -34,9 +27,11 @@ export function App(props) {
         ]}
       />
       <Header />
-      {React.Children.toArray(props.children)}
+      <Content>
+        {React.Children.toArray(props.children)}
+      </Content>
       <Footer />
-    </AppWrapper>
+    </Page>
   );
 }
 

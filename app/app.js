@@ -48,12 +48,20 @@ import createRoutes from './routes';
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
+const bitterObserver = new FontFaceObserver('Bitter', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
+  document.body.classList.add('openSansFontLoaded');
 }, () => {
-  document.body.classList.remove('fontLoaded');
+  document.body.classList.remove('openSansLoaded');
+});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+bitterObserver.load().then(() => {
+  document.body.classList.add('bitterLoaded');
+}, () => {
+  document.body.classList.remove('bitterLoaded');
 });
 
 // Create redux store with history
