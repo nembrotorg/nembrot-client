@@ -1,4 +1,6 @@
 import { injectGlobal } from 'styled-components';
+import { CONTENT_COLUMNS_SPAN, FONT_SIZE, LINE_HEIGHT } from 'config.js';
+
 // import { fontFace } from 'polished';
 
 /* eslint no-unused-expressions: 0 */
@@ -11,7 +13,9 @@ injectGlobal`
 
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 28px;
+    font-size: ${FONT_SIZE};
+    line-height: ${LINE_HEIGHT};
+    padding: ${LINE_HEIGHT} 0;
   }
 
   body.openSansFontLoaded {

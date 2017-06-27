@@ -7,11 +7,9 @@ import messages from './messages';
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <NavBar>
-          XXXX
-        </NavBar>
-      </div>
+      <NavBar>
+        XXXX
+      </NavBar>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { CONTENT_COLUMNS_SPAN, LINE_HEIGHT, QR_CODE_WIDTH } from 'config.js';
 
 import A from 'components/A';
 import Wrapper from './Wrapper';
@@ -7,14 +8,12 @@ import messages from './messages';
 
 import styled from 'styled-components';
 
-const lineHeight = '27px';
+const lineHeight = '28px';
 
 const Nav = styled.nav`
   display: grid;
-  display: grid;
-  grid-column-gap: 0.25%;
-  grid-template-columns: repeat(12, 6.25%);
-  justify-items: stretch;
+  grid-column-gap: ${LINE_HEIGHT};
+  grid-template-columns: repeat(${CONTENT_COLUMNS_SPAN}, 1fr);
   background-color: cyan;
   width: 100%;
 `;
@@ -22,23 +21,26 @@ const Nav = styled.nav`
 const Promos = styled.ul`
   background-color: coral;
   grid-column-start: 1;
-  grid-column-end: span 5;
+  grid-column-end: span 4;
+  margin: 0;
   padding: 0;
 `;
 
 const SectionLinks = styled.ul`
   background-color: rebeccapurple;
   columns: 2;
-  grid-column-start: 6;
-  grid-column-end: span 5;
+  grid-column-start: 5;
+  grid-column-end: span 4;
+  margin: 0;
   padding: 0;
 `;
 
 const ExternalLinks = styled.ul`
   background-color: chartreuse;
-  grid-column-start: 11;
-  grid-column-end: span 5;
   columns: 2;
+  grid-column-start: 9;
+  grid-column-end: span 4;
+  margin: 0;
   padding: 0;
 `;
 
@@ -49,8 +51,8 @@ const HorizontalLi = styled.li`
 const QrCodeImg = styled.img`
   clear: both;
   display: block;
-  margin-top: ${lineHeight};
-  width: 180px;
+  margin-top: ${LINE_HEIGHT};
+  width: ${QR_CODE_WIDTH};
   @media screen {
     display: none;
   }
