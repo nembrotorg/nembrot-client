@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { COLUMN_WIDTH, LINE_HEIGHT, PAGE_COLUMNS_SPAN } from 'config.js';
-
-const lineHeight = '28px';
+import { DESKTOP_BREAKPOINT, LINE_HEIGHT, PAGE_COLUMNS_SPAN, TAB } from 'config';
 
 const Page = styled.div`
-  background-color: yellow;
-  display: grid;
-  grid-column-gap: ${LINE_HEIGHT};
-  grid-template-columns: repeat(${PAGE_COLUMNS_SPAN}, 1fr);
-  min-height: 100.1%;
+  padding: 0 ${TAB} ${LINE_HEIGHT};
+
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    display: grid;
+    grid-column-gap: ${TAB};
+    grid-template-columns: repeat(${PAGE_COLUMNS_SPAN}, 1fr);
+  }
 `;
 
 export default Page;

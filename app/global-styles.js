@@ -1,10 +1,25 @@
 import { injectGlobal } from 'styled-components';
-import { CONTENT_COLUMNS_SPAN, FONT_SIZE, LINE_HEIGHT } from 'config.js';
+import {
+  BLACK,
+  LINE_HEIGHT,
+  RED,
+  SANS_FONT_SIZE,
+  TITLE_FONT_SIZE,
+  TITLE_LINE_HEIGHT,
+  WHITE,
+} from 'config';
 
 // import { fontFace } from 'polished';
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
+  @font-face {
+    font-family: 'Fontello';
+    src: url(http://d2zyjwzv9avbqu.cloudfront.net/assets/Fontello/regular-703da7314bd59322b45e54480f3b9f75.ttf) format("truetype");
+    font-weight normal;
+    font-style: normal;
+  }
+
   html,
   body {
     height: 100.1%;
@@ -12,50 +27,45 @@ injectGlobal`
   }
 
   body {
+    background-color: ${WHITE};
+    color: ${BLACK};
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: ${FONT_SIZE};
+    font-size: ${SANS_FONT_SIZE};
     line-height: ${LINE_HEIGHT};
-    padding: ${LINE_HEIGHT} 0;
   }
 
   body.openSansFontLoaded {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  @font-face{
-    font-family:XBitter;
-    src:url(http://d2zyjwzv9avbqu.cloudfront.net/assets/Bitter/bold-a26b9ad50898e7e841853e8bb9bc3895.eot);
-    src:url(http://d2zyjwzv9avbqu.cloudfront.net/assets/Bitter/bold-a26b9ad50898e7e841853e8bb9bc3895.eot?#iefix) format("embedded-opentype"),
-        url(http://d2zyjwzv9avbqu.cloudfront.net/assets/Bitter/bold-caf162075c31af3bcb879c99d8245cdf.woff) format("woff"),
-        url(http://d2zyjwzv9avbqu.cloudfront.net/assets/Bitter/bold-4d4bc77615fe25e27335fc0df34fe6e0.ttf) format("truetype");
-        font-weight:bold;
-        font-style:normal
-  }
-
-  @font-face{
-    font-family: Bitter;
-    src: url("fonts/Bitter/regular.svg") format("svg"),
-        font-weight:bold;
-        font-style:normal
+  body.robotoSlabFontLoaded {
+    #body, #annotations {
+      p, li, li a {
+      font-family: 'Roboto Slab', Georgia, serif;
+      }
     }
-
-  body li {
-    font-family: Georgia, serif;
-  }
-
-  body.bitterFontLoaded li {
-    background-color: yellow;
-    font-family: Bitter, Georgia, serif;
   }
 
   #app {
-    background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
   }
 
-  p,
-  label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+  h2 {
+    color: ${RED};
+    font-size: ${TITLE_FONT_SIZE};
+    line-height: ${TITLE_LINE_HEIGHT};
+  }
+
+  h3 {
+    display: none;
+  }
+
+  a {
+    color: ${BLACK};
+    text-decoration: none;
+    &:hover {
+      color: blue;
+    }
   }
 `;

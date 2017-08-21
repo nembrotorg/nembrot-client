@@ -1,51 +1,58 @@
 import React from 'react';
+import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import { CONTENT_COLUMNS_SPAN, LINE_HEIGHT, QR_CODE_WIDTH } from 'config.js';
-
+import {
+  CONTENT_COLUMNS_SPAN,
+  DESKTOP_BREAKPOINT,
+  FOOTER_LISTS_COLUMNS_SPAN,
+  LINE_HEIGHT,
+  QR_CODE_WIDTH,
+} from 'config';
 import A from 'components/A';
+import ArrowA from 'components/ArrowA';
 import Wrapper from './Wrapper';
 import messages from './messages';
 
-import styled from 'styled-components';
-
-const lineHeight = '28px';
-
 const Nav = styled.nav`
-  display: grid;
-  grid-column-gap: ${LINE_HEIGHT};
-  grid-template-columns: repeat(${CONTENT_COLUMNS_SPAN}, 1fr);
-  background-color: cyan;
-  width: 100%;
+  margin: 0 0 ${LINE_HEIGHT} 0;
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    display: grid;
+    grid-column-gap: ${LINE_HEIGHT};
+    grid-template-columns: repeat(${CONTENT_COLUMNS_SPAN}, 1fr);
+    margin: 0;
+    width: 100%;
+  }
 `;
 
 const Promos = styled.ul`
-  background-color: coral;
-  grid-column-start: 1;
-  grid-column-end: span 4;
-  margin: 0;
+  margin: 0 0 ${LINE_HEIGHT} 0;
   padding: 0;
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    grid-column-start: 1;
+    grid-column-end: span ${FOOTER_LISTS_COLUMNS_SPAN};
+    margin: 0;
+  }
 `;
 
 const SectionLinks = styled.ul`
-  background-color: rebeccapurple;
   columns: 2;
-  grid-column-start: 5;
-  grid-column-end: span 4;
-  margin: 0;
+  margin: 0 0 ${LINE_HEIGHT} 0;
   padding: 0;
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    grid-column-start: ${FOOTER_LISTS_COLUMNS_SPAN + 1};
+    grid-column-end: span ${FOOTER_LISTS_COLUMNS_SPAN};
+    margin: 0;
+  }
 `;
 
 const ExternalLinks = styled.ul`
-  background-color: chartreuse;
   columns: 2;
-  grid-column-start: 9;
-  grid-column-end: span 4;
   margin: 0;
   padding: 0;
-`;
-
-const HorizontalLi = styled.li`
-  display: inline-block;
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    grid-column-start: ${(FOOTER_LISTS_COLUMNS_SPAN * 2) + 1};
+    grid-column-end: span ${FOOTER_LISTS_COLUMNS_SPAN};
+  }
 `;
 
 const QrCodeImg = styled.img`
@@ -63,40 +70,40 @@ function Footer() {
     <Wrapper>
       <Nav>
         <Promos>
-          <li><A href="/texts/378">The Reading Machine Revisited</A></li>
-          <li><A href="/texts/379">The Amanuensis</A></li>
-          <li><A href="/texts/164">The Reading Machine</A></li>
-          <li><A href="/texts/112">Packing My Library</A></li>
-          <li><A href="/pantography">Pantography</A></li>
-          <li><A href="/wutz">Jean Paul: Schulmeisterlein Wutz</A></li>
+          <li><ArrowA href="/texts/378">The Reading Machine Revisited</ArrowA></li>
+          <li><ArrowA href="/texts/379">The Amanuensis</ArrowA></li>
+          <li><ArrowA href="/texts/164">The Reading Machine</ArrowA></li>
+          <li><ArrowA href="/texts/112">Packing My Library</ArrowA></li>
+          <li><ArrowA href="/pantography">Pantography</ArrowA></li>
+          <li><ArrowA href="/wutz">Jean Paul: Schulmeisterlein Wutz</ArrowA></li>
         </Promos>
         <SectionLinks>
-          <li><A href="/">Home</A></li>
-          <li><A href="/texts">Texts</A></li>
-          <li><A href="/citations">Citations</A></li>
-          <li><A href="/links">Links</A></li>
-          <li><A href="/bibliography">Bibliography</A></li>
-          <li><A href="/tags">Tags</A></li>
-          <li><A href="/remix">Remix</A></li>
-          <li><A href="/privacy">Privacy</A></li>
-          <li><A href="/api">API</A></li>
-          <li><A href="/code">Code</A></li>
-          <li><A href="/colophon">Colophon</A></li>
-          <li><A href="mailto:joe@joegatt.net">joe@joegatt.net</A></li>
+          <li><ArrowA href="/">Home</ArrowA></li>
+          <li><ArrowA href="/texts">Texts</ArrowA></li>
+          <li><ArrowA href="/citations">Citations</ArrowA></li>
+          <li><ArrowA href="/links">Links</ArrowA></li>
+          <li><ArrowA href="/bibliography">Bibliography</ArrowA></li>
+          <li><ArrowA href="/tags">Tags</ArrowA></li>
+          <li><ArrowA href="/remix">Remix</ArrowA></li>
+          <li><ArrowA href="/privacy">Privacy</ArrowA></li>
+          <li><ArrowA href="/api">API</ArrowA></li>
+          <li><ArrowA href="/code">Code</ArrowA></li>
+          <li><ArrowA href="/colophon">Colophon</ArrowA></li>
+          <li><ArrowA href="mailto:joe@joegatt.net">joe@joegatt.net</ArrowA></li>
         </SectionLinks>
         <ExternalLinks>
-          <li><A href="http://twitter.com/joegattnet">Twitter</A></li>
-          <li><A href="http://facebook.com/joegattnet">Facebook</A></li>
-          <li><A href="http://plus.google.com/+JoegattNet">Google+</A></li>
-          <li><A href="http://youtube.com/joegatt0net">Youtube</A></li>
-          <li><A href="http://vimeo.com/joegattnet">Vimeo</A></li>
-          <li><A href="http://soundcloud.com/joegattnet">Soundcloud</A></li>
-          <li><A href="http://github.com/joegattnet">Github</A></li>
-          <li><A href="http://trello.com/b/ClFWLboi/joegatt-net">Trello</A></li>
-          <li><A href="http://www.instapaper.com/p/joegattnet">Instapaper</A></li>
-          <li><A href="http://medium.com/@joegattnet">Medium</A></li>
-          <li><A href="http://www.evernote.com/pub/joegatt/joegatt.net">Evernote</A></li>
-          <li><A href="http://joegatt.net/texts.atom">Atom feed</A></li>
+          <li><ArrowA href="https://twitter.com/joegattnet">Twitter</ArrowA></li>
+          <li><ArrowA href="https://www.instagram.com/joegattnet/">Instagram</ArrowA></li>
+          <li><ArrowA href="https://facebook.com/joegattnet">Facebook</ArrowA></li>
+          <li><ArrowA href="https://youtube.com/joegatt0net">Youtube</ArrowA></li>
+          <li><ArrowA href="https://vimeo.com/joegattnet">Vimeo</ArrowA></li>
+          <li><ArrowA href="https://soundcloud.com/joegattnet">Soundcloud</ArrowA></li>
+          <li><ArrowA href="https://github.com/joegattnet">Github</ArrowA></li>
+          <li><ArrowA href="https://trello.com/joegattnet">Trello</ArrowA></li>
+          <li><ArrowA href="https://www.instapaper.com/p/joegattnet">Instapaper</ArrowA></li>
+          <li><ArrowA href="https://medium.com/@joegattnet">Medium</ArrowA></li>
+          <li><ArrowA href="https://www.evernote.com/pub/joegatt/joegatt.net">Evernote</ArrowA></li>
+          <li><ArrowA href="http://joegatt.net/texts.atom">Atom feed</ArrowA></li>
         </ExternalLinks>
       </Nav>
       <small><FormattedMessage {...messages.licenseMessage} /></small>

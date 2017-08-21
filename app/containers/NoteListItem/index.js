@@ -42,7 +42,6 @@ export class NoteListItem extends React.PureComponent { // eslint-disable-line r
 
 NoteListItem.propTypes = {
   item: React.PropTypes.object,
-  currentUser: React.PropTypes.string,
 };
 
 export default connect(createStructuredSelector({
