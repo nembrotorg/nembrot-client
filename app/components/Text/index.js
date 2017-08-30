@@ -4,6 +4,7 @@ import {
   ANNOTATIONS_FONT_SIZE,
   ANNOTATIONS_LINE_HEIGHT,
   FONT_SIZE,
+  HALF_TAB,
   RED,
   TAB
 } from 'config';
@@ -38,11 +39,38 @@ const Text = styled.section`
     }
   }
   #annotations {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
-    position: relative;
+    grid-row: 2 / span 1;
+    &.side-annotations {
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
+      position: relative;
+      ol {
+        background-color: purple;
+        padding: 0;
+      }
+      li {
+        color: ${RED};
+        line-height: ${ANNOTATIONS_LINE_HEIGHT};
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        text-align: left;
+        font-size: ${ANNOTATIONS_FONT_SIZE};
+        a:first-of-type {
+          color: ${RED};
+          display: inline-block;
+          min-width: ${HALF_TAB};
+          &:after {
+            content: '. ';
+          }
+        }
+      }
+    }
+  }
+  #versions {
     ol {
-      background-color: purple;
+      background-color: yellow;
       padding: 0;
     }
     li {
@@ -55,10 +83,11 @@ const Text = styled.section`
       text-align: left;
       font-size: ${ANNOTATIONS_FONT_SIZE};
       a:first-of-type {
+        color: ${RED};
         display: inline-block;
-        width: ${TAB};
-        &:after {
-          content: '.';
+        min-width: ${HALF_TAB};
+        &:before {
+          content: 'v';
         }
       }
     }
