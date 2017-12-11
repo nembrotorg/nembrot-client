@@ -10,7 +10,6 @@ class Texts extends Component {
       this.props.allNotesQuery.refetch()
     }
   }
-
   render() {
     if (this.props.allNotesQuery.loading) {
       return (
@@ -19,17 +18,11 @@ class Texts extends Component {
         </div>
       )
     }
-
-    let blurClass = ''
-    if (this.props.location.pathname !== '/') {
-      blurClass = ' blur'
-    }
-
     return (
       <div>
         <ul>
           {this.props.allNotesQuery.allNotes && this.props.allNotesQuery.allNotes.nodes.map(text => (
-            <li><Link to={`/texts/${text.id}`}>{text.title}</Link></li>
+            <li key={text.id}><Link to={`/texts/${text.id}`}>{text.title}</Link></li>
           ))}
         </ul>
         {this.props.children}
@@ -40,7 +33,14 @@ class Texts extends Component {
 
 const ALL_NOTES_QUERY = gql`
   query AllNotesQuery {
-    allNotes(orderBy: UPDATED_AT_DESC) {
+    allNotes(
+      condition: {
+        contentType: 0,
+        hide: false,
+        isSection: false,
+      },
+      orderBy: CREATED_AT_DESC
+    ) {
       nodes {
         id
         title

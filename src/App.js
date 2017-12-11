@@ -14,11 +14,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to React???</h1>
           <Link to="/">Home</Link>
           <Link to="/texts">Texts</Link>
-          <Link to="/texts/75">Text</Link>
         </header>
         <Switch>
-          <Route exact path="/texts" component={Texts} />
           <Route path="/texts/:id" component={Text} />
+          <Route exact path="/texts" component={Texts} />
           <Route exact path="/" component={Home} />
         </Switch>
       </div>
