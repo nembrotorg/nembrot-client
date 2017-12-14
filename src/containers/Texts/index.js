@@ -21,8 +21,10 @@ class Texts extends Component {
     return (
       <div>
         <ul>
-          {this.props.allNotesQuery.allNotes && this.props.allNotesQuery.allNotes.nodes.map(text => (
-            <li key={text.id}><Link to={`/texts/${text.id}`}>{text.title}</Link></li>
+          {this.props.allNotesQuery.allNotes && this.props.allNotesQuery.allNotes.nodes.map((link, index) => (
+            link.cachedUrl && <li key={index}>
+              <Link to={link.cachedUrl} dangerouslySetInnerHTML={{ __html: link.cachedBlurbHtml }} />
+            </li>
           ))}
         </ul>
         {this.props.children}
@@ -38,12 +40,13 @@ const ALL_NOTES_QUERY = gql`
         contentType: 0,
         hide: false,
         isSection: false,
+        listable: true,
       },
-      orderBy: CREATED_AT_DESC
+      orderBy: UPDATED_AT_DESC
     ) {
       nodes {
-        id
-        title
+        cachedUrl
+        cachedBlurbHtml
       }
     }
   }

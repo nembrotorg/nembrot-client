@@ -29,7 +29,8 @@ class Text extends Component {
     }
     return (
       <div>
-        <h1>{this.props.NoteQuery.noteById.title}</h1>
+        <h1 dangerouslySetInnerHTML={{ __html: this.props.NoteQuery.noteById.cachedHeadline }} />
+        <section dangerouslySetInnerHTML={{ __html: this.props.NoteQuery.noteById.cachedBodyHtml }} />
         {this.props.children}
       </div>
     )
@@ -40,8 +41,8 @@ const NOTE_QUERY = gql`
   query NoteQuery($noteId: Int!) {
     noteById (id: $noteId) {
       id
-      title
-      wordCount
+      cachedBodyHtml
+      cachedHeadline
     }
   }
 `;

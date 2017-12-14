@@ -11,9 +11,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to React???</h1>
-          <Link to="/">Home</Link>
-          <Link to="/texts">Texts</Link>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/texts">Texts</Link>
+            </li>
+        </ul>
         </header>
         <Switch>
           <Route path="/texts/:id" component={Text} />
