@@ -47,6 +47,8 @@ const NOTE_QUERY = gql`
   }
 `;
 
+// Stored proc: SELECT name, slug FROM tags, taggings WHERE taggable_type = 'Note' AND taggable_id = 164 AND taggings.context = 'tags' AND tags.id = taggings.tag_id
+
 const ComponentWithQuery = graphql(NOTE_QUERY, {
   name: 'NoteQuery',
   options: ({ match }) => ({
