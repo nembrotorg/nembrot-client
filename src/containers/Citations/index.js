@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-class Texts extends Component {
+class Citations extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
       this.props.allNotesQuery.refetch()
     }
   }
-
   render() {
-    const query = this.props.allNotesQuery;
-    if (query.loading) {
+    if (this.props.allNotesQuery.loading) {
       return (
         <div>
           Loading...
@@ -23,7 +21,7 @@ class Texts extends Component {
     return (
       <div>
         <ul>
-          {query.allNotes && query.allNotes.nodes.map((link, index) => (
+          {this.props.allNotesQuery.allNotes && this.props.allNotesQuery.allNotes.nodes.map((link, index) => (
             link.cachedUrl && <li key={index}>
               <Link to={link.cachedUrl} dangerouslySetInnerHTML={{ __html: link.cachedBlurbHtml }} />
             </li>
@@ -39,7 +37,7 @@ const ALL_NOTES_QUERY = gql`
   query AllNotesQuery {
     allNotes(
       condition: {
-        contentType: 0,
+        contentType: 1,
         hide: false,
         isSection: false,
         listable: true,
@@ -59,4 +57,4 @@ export default graphql(ALL_NOTES_QUERY, {
   options: {
     fetchPolicy: 'network-only',
   },
-})(Texts);
+})(Citations);
