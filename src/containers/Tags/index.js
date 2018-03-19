@@ -21,7 +21,7 @@ class Tags extends Component {
     return (
       <div>
         <ul>
-          {this.props.allValidTagsQuery.allActiveTags && this.props.allValidTagsQuery.allActiveTags.nodes.map((tag, index) => (
+          {this.props.allValidTagsQuery.activeTags && this.props.allValidTagsQuery.activeTags.nodes.map((tag, index) => (
             <li key={index}>
               <Link to={`/tags/${tag.slug}`}>{tag.name}</Link> <span className="count">{tag.activeTagsCount}</span>
             </li>
@@ -35,12 +35,12 @@ class Tags extends Component {
 
 const ALL_VALID_TAGS_QUERY = gql`
   query AllValidTagsQuery {
-    allActiveTags {
+    activeTags {
       totalCount
       nodes {
+        activeTagsCount
         name
         slug
-        activeTagsCount
       }
     }
   }
