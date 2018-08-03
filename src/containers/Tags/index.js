@@ -10,24 +10,31 @@ class Tags extends Component {
       this.props.allValidTagsQuery.refetch()
     }
   }
+
   render() {
-    if (this.props.allValidTagsQuery.loading) {
+    const {
+      allValidTagsQuery,
+      children
+    } = this.props;
+
+    if (allValidTagsQuery.loading) {
       return (
         <div>
           Loading...
         </div>
       )
     }
+
     return (
       <div>
         <ul>
-          {this.props.allValidTagsQuery.activeTags && this.props.allValidTagsQuery.activeTags.nodes.map((tag, index) => (
+          {allValidTagsQuery.activeTags && allValidTagsQuery.activeTags.nodes.map((tag, index) => (
             <li key={index}>
               <Link to={`/tags/${tag.slug}`}>{tag.name}</Link> <span className="count">{tag.activeTagsCount}</span>
             </li>
           ))}
         </ul>
-        {this.props.children}
+        {children}
       </div>
     )
   }

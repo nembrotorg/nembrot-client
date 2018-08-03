@@ -176,6 +176,10 @@ apollo-client@^2.1.0:
   optionalDependencies:
     "@types/async" "2.0.45"
 
+apollo-forms@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-forms/-/apollo-forms-0.1.0.tgz#f26d6dd6adc31eeac85b55232b173d742937cd10"
+
 apollo-link-dedup@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.3.tgz#10df05214afb53ffb19c361451f8ae19d1964c83"
@@ -185,6 +189,13 @@ apollo-link-dedup@^1.0.0:
 apollo-link-http@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.2.0.tgz#48464c2ebfa6474f7a89908696827d66b2deb5cc"
+
+apollo-link-state@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/apollo-link-state/-/apollo-link-state-0.4.1.tgz#65e9e0e12c67936b8c4b12b8438434f393104579"
+  dependencies:
+    apollo-utilities "^1.0.8"
+    graphql-anywhere "^4.1.0-alpha.0"
 
 apollo-link@1.0.3:
   version "1.0.3"
@@ -205,6 +216,10 @@ apollo-link@^1.0.0, apollo-link@^1.0.4:
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.2, apollo-utilities@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.3.tgz#bf435277609850dd442cf1d5c2e8bc6655eaa943"
+
+apollo-utilities@^1.0.11, apollo-utilities@^1.0.8:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.11.tgz#cd36bfa6e5c04eea2caf0c204a0f38a0ad550802"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -1358,6 +1373,10 @@ chalk@^2.0.0, chalk@^2.1.0, chalk@^2.3.0:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+change-emitter@^0.1.2:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -2546,7 +2565,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.16:
+fbjs@^0.8.1, fbjs@^0.8.16:
   version "0.8.16"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -2892,6 +2911,12 @@ graphql-anywhere@^4.0.1:
   dependencies:
     apollo-utilities "^1.0.3"
 
+graphql-anywhere@^4.1.0-alpha.0:
+  version "4.1.8"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.8.tgz#23882e6a16ec824febbe5bca40937cdd76c5acdc"
+  dependencies:
+    apollo-utilities "^1.0.11"
+
 graphql-tag@^2.4.2, graphql-tag@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.6.0.tgz#0fb1b9f6d6651263c47a3420e827910e6fed3952"
@@ -3043,6 +3068,10 @@ hoek@4.x.x:
 hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
+
+hoist-non-react-statics@^2.3.1:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -5405,6 +5434,15 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
+recompose@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.26.0.tgz#9babff039cb72ba5bd17366d55d7232fbdfb2d30"
+  dependencies:
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^2.3.1"
+    symbol-observable "^1.0.4"
+
 recursive-readdir@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.1.tgz#90ef231d0778c5ce093c9a48d74e5c5422d13a99"
@@ -5644,6 +5682,13 @@ restore-cursor@^2.0.0:
     onetime "^2.0.0"
     signal-exit "^3.0.2"
 
+revalidate@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/revalidate/-/revalidate-1.2.0.tgz#dffdd52a92e0158de79a5a85ce01b65815f55c5d"
+  dependencies:
+    lodash "^4.15.0"
+    object-assign "^4.1.0"
+
 right-align@^0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/right-align/-/right-align-0.1.3.tgz#61339b722fe6a3515689210d24e14c96148613ef"
@@ -5835,6 +5880,10 @@ slice-ansi@1.0.0:
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
+
+smoothscroll@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/smoothscroll/-/smoothscroll-0.4.0.tgz#40e507b46461408ba1b787d0081e1e883c4124a5"
 
 sntp@1.x.x:
   version "1.0.9"
@@ -6119,6 +6168,10 @@ sw-toolbox@^3.4.0:
 symbol-observable@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.1.0.tgz#5c68fd8d54115d9dfb72a84720549222e8db9b32"
+
+symbol-observable@^1.0.4:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
 symbol-tree@^3.2.1:
   version "3.2.2"
