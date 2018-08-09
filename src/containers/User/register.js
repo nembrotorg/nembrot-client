@@ -1,93 +1,69 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { combineValidators, composeValidators,  isRequired, isAlphabetic } from 'revalidate';
-import { createForm, FormSchema, FormProvider, Input } from 'apollo-forms';
+import { Mutation } from 'react-apollo';
 
-// https://www.npmjs.com/package/apollo-forms
+const REGISTER = gql`
+  mutation RegisterUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+    registerUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+      firstName
+      lastName
+      email
+      password
+    }
+  }
+`;
 
 class Register extends Component {
 
-  renderForm = () => {
-
-    const fragment = gql`
-      fragment client on User {
-        firstName
-        lastName
-        email
-        password
-      }
-    `;
-
-    const inputQuery = gql`
-      ${fragment}
-      {
-        userForm @client {
-          ...client
-        }
-      }
-    `;
-
-    const errorsQuery = gql`
-      ${fragment}
-      {
-        userFormErrors @client {
-          ...client
-        }
-      }
-    `;
-
-    const validator = combineValidators({
-      firstName: composeValidators(isRequired, isAlphabetic)('Name'),
-      lastName: composeValidators(isRequired, isAlphabetic)('Surname'),
-      email: composeValidators(isRequired, isAlphabetic)('Email'),
-      password: composeValidators(isRequired, isAlphabetic)('Password'),
-    });
-
-    const initialData = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
-    }
-
-    const userMutation = gql`
-      mutation($inputData: RegisterUserInput) {
-        registerUser(inputData: $inputData)
-      }
-    `;
-
-    const Form = createForm({
-      errorsQuery: errorsQuery,
-      inputQuery: inputQuery,
-      mutation: userMutation,
-    })(FormProvider);
+  render() {
+    let firstNameInput,
+        lastNameInput,
+        emailInput,
+        passwordInput;
 
     return (
-      <FormProvider
-        formName="userForm"
-      >
-        <Input
-          field="firstName"
-        />
-        <Input
-          field="lastName"
-        />
-        <Input
-          type="email"
-          field="email"
-        />
-        <Input
-          type="password"
-          field="password"
-        />
-        <button type="submit">Submit</button>
-      </FormProvider>
+      <Mutation mutation={REGISTER}>
+        {(registerUser, { loading, error, data }) => (
+          <div>
+            {error && <p>Error! {error.message}</p>}
+            <form
+              onSubmit={event => {
+                event.preventDefault();
+                registerUser({
+                  variables: {
+                    firstName: firstNameInput.value,
+                    lastName: lastNameInput.value,
+                    email: emailInput.value,
+                    password: passwordInput.value,
+                  }
+                });
+              }}
+            >
+              <input
+                ref={node => { firstNameInput = node; }}
+                required
+              />
+              <input
+                ref={node => { lastNameInput = node; }}
+                required
+              />
+              <input
+                ref={node => { emailInput = node; }}
+                type="email"
+                required
+              />
+              <input
+                ref={node => { passwordInput = node; }}
+                type="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                required
+              />
+              <button type="submit">Register</button>
+            </form>
+          </div>
+        )}
+      </Mutation>
     );
-  };
-
-  render() {
-    return this.renderForm();
   };
 }
 
