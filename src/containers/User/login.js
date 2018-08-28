@@ -3,19 +3,15 @@ import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 
-const REGISTER = gql`
-  mutation RegisterUser($user: RegisterUserInput!) {
-    registerUser(input: $user) {
-      loggedInUser {
-        firstName
-        lastName
-        email
-      }
+const LOGIN = gql`
+  mutation LoginUser($user: LoginUserInput!) {
+    authenticateUser(input: $user) {
+      jwtToken
     }
   }
 `;
 
-class Register extends Component {
+class Login extends Component {
 
   render() {
     let firstNameInput,
@@ -24,7 +20,7 @@ class Register extends Component {
         passwordInput;
 
     return (
-      <Mutation mutation={REGISTER}>
+      <Mutation mutation={LOGIN}>
         {(registerUser, { loading, error, data }) => (
           <div>
             {error && <p>Error! {error.message}</p>}
@@ -34,8 +30,6 @@ class Register extends Component {
                 registerUser({
                   variables: {
                     user: {
-                      firstName: firstNameInput.value,
-                      lastName: lastNameInput.value,
                       email: emailInput.value,
                       password: passwordInput.value,
                     }
@@ -43,14 +37,6 @@ class Register extends Component {
                 });
               }}
             >
-              <input
-                ref={node => { firstNameInput = node; }}
-                required
-              />
-              <input
-                ref={node => { lastNameInput = node; }}
-                required
-              />
               <input
                 ref={node => { emailInput = node; }}
                 type="email"
@@ -62,9 +48,9 @@ class Register extends Component {
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 required
               />
-              <button type="submit">Register</button>
+              <button type="submit">Log in</button>
             </form>
-            <Link to="/user/login">Already registered?</Link>
+            <Link to="/user/register">Not yet registered?</Link>
           </div>
         )}
       </Mutation>
@@ -72,4 +58,4 @@ class Register extends Component {
   };
 }
 
-export default Register;
+export default Login;

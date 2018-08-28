@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Feature from './containers/Texts/feature';
 import Home from './containers/Home/index';
 import Register from './containers/User/register';
+import Login from './containers/User/login';
 import Tags from './containers/Tags/index';
 import Text from './containers/Texts/show';
 import Texts from './containers/Texts/index';
@@ -25,7 +26,8 @@ class App extends Component {
               <Link to="/tags">Tags</Link>
             </li>
             <li>
-              <Link to="/user/register">Register / Log in</Link>
+              <Link to="/user/register">Register</Link>/
+              <Link to="/user/login">Log in</Link>
             </li>
         </ul>
         </header>
@@ -34,6 +36,7 @@ class App extends Component {
           <Route exact path="/texts" component={Texts} />
           <Route exact path="/tags" component={Tags} />
           <Route exact path="/user/register" component={Register} />
+          <Route exact path="/user/login" component={Login} />
           <Route exact path="/:feature/:featureId" component={Feature} />
           <Route exact path="/:feature" component={Feature} />
           <Route exact path="/" component={Home} />
