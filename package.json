@@ -13,7 +13,9 @@
   },
   "homepage": "https://github.com/joegattnet/joegatt.net-client#readme",
   "dependencies": {
+    "apollo-boost": "^0.1.15",
     "apollo-client-preset": "^1.0.4",
+    "apollo-link-context": "^1.0.8",
     "apollo-link-state": "^0.4.1",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.6.0",
@@ -31,5 +33,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
