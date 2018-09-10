@@ -9,8 +9,6 @@ import Tags from './containers/Tags/index';
 import Text from './containers/Texts/show';
 import Texts from './containers/Texts/index';
 
-import './App.css';
-
 class App extends Component {
   render() {
     return (
@@ -29,10 +27,12 @@ class App extends Component {
             <li>
               <Link to="/api">API</Link>
             </li>
-            <li>
+            {localStorage.getItem('authToken') ? <li>
+              <Link to="#" onClick={() => localStorage.removeItem('authToken')}>Log out</Link>
+            </li> : <li>
               <Link to="/user/register">Register</Link>/
               <Link to="/user/login">Log in</Link>
-            </li>
+            </li>}
         </ul>
         </header>
         <Switch>

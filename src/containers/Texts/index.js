@@ -5,11 +5,10 @@ import gql from 'graphql-tag';
 
 const ALL_VALID_TEXTS_QUERY = gql`
   query AllValidTextsQuery {
-    activeNotes {
+    texts {
       nodes {
         id
         title
-        role
       }
     }
   }
@@ -25,9 +24,9 @@ class Texts extends Component {
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-              {data.activeNotes.nodes.map((text, index) => (
+              {data.texts.nodes.map((text, index) => (
                 <li key={text.id}>
-                  <Link to={`/texts/${text.id}`}>{text.title} | {text.role}</Link>
+                  <Link to={`/texts/${text.id}`}>{text.title}</Link>
                 </li>
               ))}
             </ul>
