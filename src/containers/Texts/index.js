@@ -8,7 +8,8 @@ const ALL_VALID_TEXTS_QUERY = gql`
     texts {
       nodes {
         id
-        title
+        cachedUrl
+        cachedBlurbHtml
       }
     }
   }
@@ -24,11 +25,16 @@ class Texts extends Component {
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-              {data.texts.nodes.map((text, index) => (
-                <li key={text.id}>
-                  <Link to={`/texts/${text.id}`}>{text.title}</Link>
-                </li>
-              ))}
+              {data.texts.nodes.map((text, index) => {
+                if (!text.cachedUrl) {
+                  return null;
+                }
+                return (
+                  <li key={text.id}>
+                    <Link to={text.cachedUrl} dangerouslySetInnerHTML={{ __html: text.cachedBlurbHtml }} />
+                  </li>
+                )
+              })}
             </ul>
           );
         }}
