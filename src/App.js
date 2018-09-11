@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import Api from './containers/Api/index';
+import Citations from './containers/Citations/index';
 import Feature from './containers/Texts/feature';
 import Home from './containers/Home/index';
 import Register from './containers/User/register';
@@ -22,6 +23,9 @@ class App extends Component {
               <Link to="/texts">Texts</Link>
             </li>
             <li>
+              <Link to="/citations">Citations</Link>
+            </li>
+            <li>
               <Link to="/tags">Tags</Link>
             </li>
             <li>
@@ -38,6 +42,7 @@ class App extends Component {
         <Switch>
           <Route path="/texts/:id" component={Text} />
           <Route exact path="/texts" component={Texts} />
+          <Route exact path="/citations" component={Citations} />
           <Route exact path="/tags" component={Tags} />
           <Route exact path="/api" component={Api} />
           <Route exact path="/user/register" component={Register} />

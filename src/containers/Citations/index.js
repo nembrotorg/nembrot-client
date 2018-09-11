@@ -1,50 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { graphql } from 'react-apollo';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-class Citations extends Component {
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.location.key !== nextProps.location.key) {
-      this.props.allNotesQuery.refetch()
-    }
-  }
-  render() {
-    if (this.props.allNotesQuery.loading) {
-      return (
-        <div>
-          Loading...
-        </div>
-      )
-    }
-    return (
-      <div>
-        <ul>
-          {this.props.allNotesQuery.allNotes && this.props.allNotesQuery.allNotes.nodes.map((link, index) => (
-            link.cachedUrl && <li key={index}>
-              <Link to={link.cachedUrl} dangerouslySetInnerHTML={{ __html: link.cachedBlurbHtml }} />
-            </li>
-          ))}
-        </ul>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-
-const ALL_NOTES_QUERY = gql`
-  query AllNotesQuery {
-    allNotes(
-      condition: {
-        contentType: 1,
-        hide: false,
-        isSection: false,
-        listable: true,
-      },
-      orderBy: UPDATED_AT_DESC
-    ) {
+const ALL_VALID_TEXTS_QUERY = gql`
+  query AllValidCitationsQuery {
+    citations {
       nodes {
+        id
         cachedUrl
         cachedBlurbHtml
       }
@@ -52,9 +15,32 @@ const ALL_NOTES_QUERY = gql`
   }
 `;
 
-export default graphql(ALL_NOTES_QUERY, {
-  name: 'allNotesQuery',
-  options: {
-    fetchPolicy: 'network-only',
-  },
-})(Citations);
+class Texts extends Component {
+
+  render() {
+    return (
+      <Query query={ALL_VALID_TEXTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return 'Loading...';
+          if (error) return `Error! ${error.message}`;
+          return (
+            <ul>
+              {data.citations.nodes.map((citation, index) => {
+                if (!citation.cachedUrl) {
+                  return null;
+                }
+                return (
+                  <li key={citation.id}>
+                    <Link to={citation.cachedUrl} dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
+                  </li>
+                )
+              })}
+            </ul>
+          );
+        }}
+      </Query>
+    );
+  }
+}
+
+export default Texts;
