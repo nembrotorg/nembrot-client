@@ -10,6 +10,7 @@ const ALL_VALID_TEXTS_QUERY = gql`
         id
         cachedUrl
         cachedBlurbHtml
+        cachedSourceHtml
       }
     }
   }
@@ -29,9 +30,13 @@ class Texts extends Component {
                 if (!citation.cachedUrl) {
                   return null;
                 }
+                console.log('CIT. ', citation.id, citation.cachedBlurbHtml.split(", "));
                 return (
                   <li key={citation.id}>
-                    <Link to={citation.cachedUrl} dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
+                    <Link to={citation.cachedUrl}>
+                      <p dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
+                      <p dangerouslySetInnerHTML={{ __html: `&mdash; ${citation.cachedSourceHtml}` }} />
+                    </Link>
                   </li>
                 )
               })}

@@ -25,16 +25,12 @@ class Texts extends Component {
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-              {data.texts.nodes.map((text, index) => {
-                if (!text.cachedUrl) {
-                  return null;
-                }
-                return (
+              {data.texts.nodes.map((text, index) => (
                   <li key={text.id}>
                     <Link to={text.cachedUrl} dangerouslySetInnerHTML={{ __html: text.cachedBlurbHtml }} />
                   </li>
                 )
-              })}
+              )}
             </ul>
           );
         }}
