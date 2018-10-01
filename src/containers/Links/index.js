@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const ALL_VALID_TEXTS_QUERY = gql`
-  query AllValidCitationsQuery {
-    citations {
+const ALL_VALID_LINKS_QUERY = gql`
+  query AllValidLinksQuery {
+    links {
       nodes {
         id
+        cachedHeadline
         cachedUrl
         cachedBlurbHtml
         cachedSourceHtml
@@ -16,26 +17,26 @@ const ALL_VALID_TEXTS_QUERY = gql`
   }
 `;
 
-class Citations extends Component {
+class Links extends Component {
 
   render() {
     return (
-      <Query query={ALL_VALID_TEXTS_QUERY}>
+      <Query query={ALL_VALID_LINKS_QUERY}>
         {({ loading, error, data }) => {
           if (loading) return 'Loading...';
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-              {data.citations.nodes.map((citation, index) => {
-                if (!citation.cachedUrl) {
+              {data.links.nodes.map((link, index) => {
+                if (!link.cachedUrl) {
                   return null;
                 }
-                console.log('CIT. ', citation.id, citation.cachedBlurbHtml.split(", "));
                 return (
-                  <li key={citation.id}>
-                    <Link to={citation.cachedUrl}>
-                      <p dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
-                      <p dangerouslySetInnerHTML={{ __html: `&mdash; ${citation.cachedSourceHtml}` }} />
+                  <li key={link.id}>
+                    <Link to={link.cachedUrl}>
+                      <p dangerouslySetInnerHTML={{ __html: link.cachedHeadline }} />
+                      <p dangerouslySetInnerHTML={{ __html: link.cachedBlurbHtml }} />
+                      <p dangerouslySetInnerHTML={{ __html: `&mdash; ${link.cachedSourceHtml}` }} />
                     </Link>
                   </li>
                 )
@@ -48,4 +49,4 @@ class Citations extends Component {
   }
 }
 
-export default Citations;
+export default Links;
