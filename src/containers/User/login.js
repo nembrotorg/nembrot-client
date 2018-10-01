@@ -29,10 +29,12 @@ class Login extends Component {
           console.log('LOGGED IN???', data.authenticateUser.jwtToken)
         }}
       >
-        {(authenticateUser, { loading, error, data }) => {
+        {(authenticateUser, { loading, error, data, client }) => {
           if (data && data.authenticateUser.jwtToken) {
             localStorage.setItem('authToken', data.authenticateUser.jwtToken);
+            client.resetStore();
             console.log(JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1])));
+            console.log('CLIENT ==>', client);
             // const userId = JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1]));
             return (<p>You are logged in!</p>);
           }
