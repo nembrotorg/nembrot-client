@@ -33,14 +33,26 @@ class Login extends Component {
           if (data && data.authenticateUser.jwtToken) {
             localStorage.setItem('authToken', data.authenticateUser.jwtToken);
             client.resetStore();
-            console.log(JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1])));
+            const parsedToken = JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1]));
+            console.log(parsedToken);
             console.log('CLIENT ==>', client);
+            client.writeData({ data: {
+              user: {
+                exp: parsedToken.exp,
+                firstName: parsedToken.first_name,
+                lastName: parsedToken.last_name,
+                role: parsedToken.role,
+                userId: parsedToken.user_id,
+                }
+              }
+            });
             // const userId = JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1]));
-            return (<p>You are logged in!</p>);
+            return (<p>You are logged in, {parsedToken.first_name}!</p>);
           }
 
           return (
             <div>
+              {/* <h1>{this.state.user.firstName}</h1> */}
               {error && <p>Error! {error.message}</p>}
               {data && !authenticateUser.jwtToken && <p>
                 Log in failed!

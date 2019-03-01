@@ -30,7 +30,6 @@ class Citations extends Component {
                 if (!citation.cachedUrl) {
                   return null;
                 }
-                console.log('CIT. ', citation.id, citation.cachedBlurbHtml.split(", "));
                 return (
                   <li key={citation.id}>
                     <Link to={citation.cachedUrl}>
