@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom'
 import { createHttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context';
 import {
   ApolloClient,
   ApolloLink,
-  HttpLink,
+  // HttpLink, - Exit Boost!!!
   InMemoryCache,
 } from 'apollo-boost';
+
 import App from './App';
 
 const httpLink = createHttpLink({
