@@ -1,12 +1,12 @@
 import React, { Component, createContext } from 'react';
-
+import { client } from '../index';
 export const UserContext = createContext();
 
 export class UserContextProvider extends Component {
 
-  componentDidUpdate() {
-    // this.checkAuthentication();
-  }
+  // componentDidUpdate() {
+  //   this.checkAuthentication();
+  // }
 
   componentDidMount() {
     this.checkAuthentication();
@@ -29,6 +29,7 @@ export class UserContextProvider extends Component {
 
   signOutUser = () => {
     localStorage.removeItem('authToken');
+    client.resetStore();
     this.setState(state => ({
       user: this.signedOutUser
     }));

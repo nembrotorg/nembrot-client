@@ -21,6 +21,9 @@ class Texts extends Component {
   render() {
     return (
       <div>
+        <UserContext.Consumer>
+          {({user}) => user.role}
+        </UserContext.Consumer>
         <Query query={ALL_VALID_TEXTS_QUERY}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...';
@@ -37,9 +40,6 @@ class Texts extends Component {
             );
           }}
         </Query>
-        <UserContext.Consumer>
-          {({user}) => user.role}
-        </UserContext.Consumer>
       </div>
     );
   }
