@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
+import { UserContext } from '../../helpers/UserContext';
 
 const LOGIN = gql`
   mutation AuthenticateUser($user: AuthenticateUserInput!) {
@@ -23,10 +24,8 @@ class Login extends Component {
         onCompleted={data => {
           const token = data.authenticateUser.jwtToken;
           if (!token) {
-            console.log('SET STATE ERROR = NOT LOGGED IN');
             return;
           }
-          console.log('LOGGED IN???', data.authenticateUser.jwtToken)
         }}
       >
         {(authenticateUser, { loading, error, data, client }) => {
@@ -34,8 +33,6 @@ class Login extends Component {
             localStorage.setItem('authToken', data.authenticateUser.jwtToken);
             client.resetStore();
             const parsedToken = JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1]));
-            console.log(parsedToken);
-            console.log('CLIENT ==>', client);
             client.writeData({ data: {
               user: {
                 exp: parsedToken.exp,
@@ -46,13 +43,17 @@ class Login extends Component {
                 }
               }
             });
-            // const userId = JSON.parse(window.atob(data.authenticateUser.jwtToken.split('.')[1]));
-            return (<p>You are logged in, {parsedToken.first_name}!</p>);
+            return (
+              <div>
+                <UserContext.Consumer>
+                  {({user, signInUser}) => !user.signedIn && signInUser()}
+                </UserContext.Consumer>
+              </div>
+            );
           }
 
           return (
             <div>
-              {/* <h1>{this.state.user.firstName}</h1> */}
               {error && <p>Error! {error.message}</p>}
               {data && !authenticateUser.jwtToken && <p>
                 Log in failed!

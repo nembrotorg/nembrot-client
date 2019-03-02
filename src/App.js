@@ -18,6 +18,19 @@ class App extends Component {
     return (
         <div className="App">
           <UserContextProvider>
+            <LoginToolbar />
+            <hr />
+            <footer className="App-header">
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/texts">Texts</Link></li>
+                <li><Link to="/citations">Citations</Link></li>
+                <li><Link to="/links">Links</Link></li>
+                <li><Link to="/tags">Tags</Link></li>
+                <li><Link to="/api">API</Link></li>
+              </ul>
+            </footer>
+            <hr />
             <Switch>
               <Route path="/texts/:id" component={Text} />
               <Route exact path="/texts" component={Texts} />
@@ -31,18 +44,6 @@ class App extends Component {
               <Route exact path="/:feature" component={Feature} />
               <Route exact path="/" component={Home} />
             </Switch>
-            <footer className="App-header">
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/texts">Texts</Link></li>
-                <li><Link to="/citations">Citations</Link></li>
-                <li><Link to="/links">Links</Link></li>
-                <li><Link to="/tags">Tags</Link></li>
-                <li><Link to="/api">API</Link></li>
-              </ul>
-            </footer>
-            <hr />
-            <LoginToolbar />
           </UserContextProvider>
         </div>
     );

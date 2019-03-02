@@ -6,9 +6,9 @@ class LoginToolbar extends Component {
   render() {
     return (
       <UserContext.Consumer>
-        {({user}) => user.signedIn ? <p>
+        {({user, signOutUser}) => user.signedIn ? <p>
              <span>You are logged in as {user.name}</span>
-             | <Link to={window.location.href} onClick={() => localStorage.removeItem('authToken')}>Log out</Link>
+             | <Link to="#" onClick={() => signOutUser()}>Log out</Link>
            </p> : <p>
            <Link to="/user/register">Register</Link>/
            <Link to="/user/login">Log in</Link>
