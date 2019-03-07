@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
-import { UserContext } from '../../helpers/UserContext';
+import { UserContext } from '../helpers/UserContext';
 
 const LOGIN = gql`
   mutation AuthenticateUser($user: AuthenticateUserInput!) {

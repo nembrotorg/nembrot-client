@@ -1,16 +1,16 @@
 import React, { Component, } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import Api from './containers/Api/index';
-import Citations from './containers/Citations/index';
-import Feature from './containers/Texts/feature';
-import Home from './containers/Home/index';
-import Links from './containers/Links/index';
-import Login from './containers/User/login';
-import LoginToolbar from './containers/User/loginToolbar';
-import Register from './containers/User/register';
-import Tags from './containers/Tags/index';
-import Text from './containers/Texts/show';
-import Texts from './containers/Texts/index';
+import Api from './pages/Api';
+import Citations from './pages/Citations';
+import Feature from './pages/Feature';
+import Home from './pages/Home';
+import Links from './pages/Links';
+import Login from './pages/Login';
+import LoginToolbar from './pages/LoginToolbar';
+import Register from './pages/Register';
+import Tags from './pages/Tags';
+import Text from './pages/Text';
+import Texts from './pages/Texts';
 import { UserContextProvider, UserContext } from './helpers/UserContext';
 
 class App extends Component {

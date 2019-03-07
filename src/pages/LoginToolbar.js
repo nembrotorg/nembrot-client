@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../helpers/UserContext';
+import { UserContext } from '../helpers/UserContext';
 
 class LoginToolbar extends Component {
   render() {

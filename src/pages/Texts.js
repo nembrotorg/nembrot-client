@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { UserContext } from '../../helpers/UserContext';
+import { UserContext } from '../helpers/UserContext';
 
 const ALL_VALID_TEXTS_QUERY = gql`
   query AllValidTextsQuery {
